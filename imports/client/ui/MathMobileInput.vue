@@ -1,0 +1,125 @@
+<template lang="jade">
+.mobile-input-container
+  .display {{beforeCursor}}<span class="cursor">│</span>{{afterCursor}}
+  ons-row
+    ons-col(width="20%" v-for="key in keys")
+      .button-container
+        .math-button(v-bind:class="key.class" @click="processKey(key.symbol)") {{key.symbol}}
+  ons-row.button-container
+    ons-col(width="60%")
+      ons-row
+        ons-col(width="33%")
+          .master-button(modifier="large quiet") -
+        ons-col(width="33%")
+          .master-button(modifier="large quiet") 1
+        ons-col(width="33%")
+          .master-button(modifier="large quiet") +
+    ons-col(width="40%")
+      .master-button(modifier="large" @click="submit") Abgeben
+</template>
+
+<script lang="coffee">
+#import { teXifyAM } from "/imports/client/mathproblems/renderAM.coffee"
+import MathDisplay from "./MathDisplay.vue"
+return
+  data : ->
+    keys : [
+      {symbol : "a", class : "special"}, {symbol : "b", class : "special"}, {symbol : "c", class : "special"},
+      {symbol : "d", class : "special"}, {symbol : "e", class : "special"},
+      {symbol : "←", class : "control"}, {symbol : "del", class : "control"}, {symbol : "→", class : "control"},
+      {symbol : "(", class : "operator"}, {symbol : ")", class : "operator"},
+      {symbol : "7", class : "number"}, {symbol : "8", class : "number"}, {symbol : "9", class : "number"},
+      {symbol : "/", class : "operator"}, {symbol : "√", class : "operator"},
+      {symbol : "4", class : "number"}, {symbol : "5", class : "number"}, {symbol : "6", class : "number"},
+      {symbol : "*", class : "operator"}, {symbol : "^", class : "operator"},
+      {symbol : "1", class : "number"}, {symbol : "2", class : "number"}, {symbol : "3", class : "number"},
+      {symbol : "-", class : "operator"}, {symbol : ",", class : "control"},
+      {symbol : "0", class : "number"}, {symbol : ".", class : "operator"}, {symbol : "=", class : "operator"},
+      {symbol : "+", class : "operator"}, {symbol : "?", class : "control"}
+    ]
+    cursorPosition : 0
+    answerString : ""
+    tickle : 0
+  computed :
+    beforeCursor : -> @answerString.slice 0, @cursorPosition
+    afterCursor : -> @answerString.slice @cursorPosition
+  methods :
+    insert : (symbol) ->
+      beforeCursor = @answerString.slice 0, @cursorPosition
+      afterCursor = @answerString.slice @cursorPosition
+      @answerString = beforeCursor.concat symbol, afterCursor
+      @cursorPosition = @cursorPosition += symbol.length
+    cursorLeft : ->
+      if @cursorPosition > 0 then @cursorPosition -= 1
+    cursorRight : ->
+      if @cursorPosition < @answerString.length then @cursorPosition += 1
+    delete : ->
+      if @cursorPosition > 0
+        before = @answerString.slice 0, @cursorPosition-1
+        after = @answerString.slice @cursorPosition
+        @answerString = before.concat after
+        @cursorPosition -= 1
+    processKey : (symbol) ->
+      switch symbol
+        when "del"
+          @delete()
+        when "←"
+          @cursorLeft()
+        when "→"
+          @cursorRight()
+        when "√"
+          @insert "sqrt("
+        else
+          @insert symbol
+    submit : ->
+      @$emit "submit", @answerString
+  props : ["math"]
+  components : {MathDisplay}
+</script>
+
+<style scoped lang="sass">
+.mobile-input-container
+  padding : 10px
+.button-container
+  padding : 2px
+.math-button
+  font-size : 1em
+  width : 100%
+  padding : 4px 0
+  margin : 0
+  border : 0
+  text-align : center
+  // border-radius : 5px
+  // box-shadow : 2px 2px 3px grey
+.master-button
+  font-size : 1.1em
+  width : 100%
+  padding : 5px 0
+  margin : 4px 0 0 0px
+  border : 0px
+  text-align : center
+  background-color : silver
+.number
+  color : white
+  background-color : grey
+.operator
+  color : black
+  background-color : orange
+.control
+  color : black
+  background-color : darkgrey
+.special
+  color : black
+  background-color : lightgrey
+.display
+  background-color : #444
+  color : lime
+  font-size : 1.1em
+  padding : 10px
+  margin : 4px 2px 7px 2px
+  // border-radius : 5px
+  // box-shadow : inset -1px -1px 8px 1px silver, 2px 2px 2px grey
+.cursor
+  color : red
+  margin : -9px
+</style>
