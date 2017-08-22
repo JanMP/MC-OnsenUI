@@ -2,7 +2,7 @@
 v-ons-toolbar
   .center {{title}}
   .left
-    v-ons-back-button
+    v-ons-back-button(v-if="showBackButton")
   .right
     v-ons-toolbar-button
       v-ons-icon(icon="fa-bars" @click="toggleMenu")
@@ -12,9 +12,10 @@ v-ons-toolbar
 return
   computed :
     showBackButton : ->
-      @$store.state.navigator.stack.length > 1
+      @$store.state.menu.selected is "modules" and @$store.state.navigator.stack.length > 1
   methods :
     toggleMenu : ->
+      console.log @$store.state.menu.selected
       @$store.commit "menu/toggle"
   props : ["title"]
 </script>

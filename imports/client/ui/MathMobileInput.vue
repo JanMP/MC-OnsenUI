@@ -1,19 +1,23 @@
 <template lang="jade">
 .mobile-input-container
   .display {{beforeCursor}}<span class="cursor">│</span>{{afterCursor}}
+  ons-row(v-if="letterKeys")
+    ons-col(v-for="key in letterKeys" key="key.symbol" v-bind:width="key.width")
+      .button-container
+        .math-button(v-bind:class="key.class" @click="processKey(key.symbol)") {{key.symbol}}
   ons-row
-    ons-col(width="20%" v-for="key in keys")
+    ons-col(width="20%" v-for="key in keys" key="key.symbol")
       .button-container
         .math-button(v-bind:class="key.class" @click="processKey(key.symbol)") {{key.symbol}}
   ons-row.button-container
     ons-col(width="60%")
       ons-row
         ons-col(width="33%")
-          .master-button(modifier="large quiet") -
+          .master-button(modifier="large quiet" @click="decLevel") -
         ons-col(width="33%")
-          .master-button(modifier="large quiet") 1
+          .master-button(modifier="large quiet") Level {{level}}
         ons-col(width="33%")
-          .master-button(modifier="large quiet") +
+          .master-button(modifier="large quiet" @click="incLevel") +
     ons-col(width="40%")
       .master-button(modifier="large" @click="submit") Abgeben
 </template>
@@ -24,8 +28,6 @@ import MathDisplay from "./MathDisplay.vue"
 return
   data : ->
     keys : [
-      {symbol : "a", class : "special"}, {symbol : "b", class : "special"}, {symbol : "c", class : "special"},
-      {symbol : "d", class : "special"}, {symbol : "e", class : "special"},
       {symbol : "←", class : "control"}, {symbol : "del", class : "control"}, {symbol : "→", class : "control"},
       {symbol : "(", class : "operator"}, {symbol : ")", class : "operator"},
       {symbol : "7", class : "number"}, {symbol : "8", class : "number"}, {symbol : "9", class : "number"},
@@ -43,6 +45,24 @@ return
   computed :
     beforeCursor : -> @answerString.slice 0, @cursorPosition
     afterCursor : -> @answerString.slice @cursorPosition
+    letterKeys : ->
+      solutionStr = @solution
+      arr = []
+      for str in ["sin", "cos", "tan", "cot"]
+        newSolutionStr = solutionStr.replace str, ""
+        if newSolutionStr isnt solutionStr
+          arr.push str
+          solutionStr = newSolutionStr
+      symbols = arr.concat _.sortBy _.uniq /([a-z])/ig[Symbol.match] solutionStr
+      if 0 < (numSymbols = symbols.length)
+        @$emit "setHeight", "307px"
+        symbols.map (e)->
+          symbol : e
+          class : "special"
+          width : "#{100/numSymbols}%"
+      else
+        @$emit "setHeight", "275px"
+        []
   methods :
     insert : (symbol) ->
       beforeCursor = @answerString.slice 0, @cursorPosition
@@ -73,7 +93,11 @@ return
           @insert symbol
     submit : ->
       @$emit "submit", @answerString
-  props : ["math"]
+    decLevel : ->
+      @$emit "decLevel"
+    incLevel : ->
+      @$emit "incLevel"
+  props : ["math", "solution", "level"]
   components : {MathDisplay}
 </script>
 
@@ -112,7 +136,7 @@ return
   color : black
   background-color : lightgrey
 .display
-  background-color : #444
+  background-color : #555
   color : lime
   font-size : 1.1em
   padding : 10px
@@ -120,6 +144,6 @@ return
   // border-radius : 5px
   // box-shadow : inset -1px -1px 8px 1px silver, 2px 2px 2px grey
 .cursor
-  color : red
+  color : lime
   margin : -9px
 </style>

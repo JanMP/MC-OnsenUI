@@ -2,7 +2,7 @@
 .menu
   v-ons-list-title Einstellungen
   v-ons-list
-    v-ons-list-item
+    v-ons-list-item(@click="select('login')")
       .left
         v-ons-icon.list-item__icon(fixed-width icon="fa-sign-in")
       .center Sign-In
@@ -22,13 +22,13 @@
         v-ons-icon(icon="fa-angle-right")
   v-ons-list-title Funktionen
   v-ons-list
-    v-ons-list-item
+    v-ons-list-item(@click="select('modules')")
       .left
         v-ons-icon.list-item__icon(fixed-width icon="fa-list")
       .center Aufgaben
       .right
         v-ons-icon(icon="fa-angle-right")
-    v-ons-list-item
+    v-ons-list-item(@click="select('userStatistics')")
       .left
         v-ons-icon.list-item__icon(fixed-width icon="fa-bar-chart")
       .center Meine Statistik
@@ -50,7 +50,7 @@
         v-ons-icon(icon="fa-angle-right")
   v-ons-list-title Information
   v-ons-list
-    v-ons-list-item
+    v-ons-list-item(@click="select('news')")
       .left
         v-ons-icon.list-item__icon(fixed-width icon="fa-info-circle")
       .center News
@@ -66,8 +66,10 @@
 
 <script lang="coffee">
 return
-  data : ->
-    test : "Test 123123"
+  methods :
+    select : (str) ->
+      @$store.commit "menu/select", str
+      @$store.commit "menu/toggle"
 </script>
 
 <style scoped lang="sass">

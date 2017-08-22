@@ -1,5 +1,8 @@
-export default {
+import authModule from "./auth.coffee"
+
+export default store =
   modules :
+    auth : authModule
     navigator :
       strict : true
       namespaced : true
@@ -18,7 +21,9 @@ export default {
       namespaced : true
       state :
         showMenu : false
+        selected : "news"
       mutations :
         toggle : (state, newValue) ->
           state.showMenu = newValue ? not state.showMenu
-}
+        select : (state, newValue) ->
+          state.selected = newValue

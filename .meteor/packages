@@ -17,13 +17,22 @@ es5-shim@4.6.15                # ECMAScript 5 compatibility for older browsers
 ecmascript@0.9.0-beta.23              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.3.0-beta.23            # Server-side component of the `meteor shell` command
 
-autopublish@1.0.7             # Publish all data to the clients (for prototyping)
-insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
+#autopublish@1.0.7             # Publish all data to the clients (for prototyping)
+#insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
+
+aldeed:collection2-core
+mdg:validated-method
+dburles:collection-helpers
+reywood:publish-composite
+alanning:roles
+accounts-password
+email
 
 static-html
 session@1.1.7
 
 coffeescript
+
 akryum:vue
 akryum:vue-component
 akryum:vue-jade
