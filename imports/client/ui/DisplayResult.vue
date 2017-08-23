@@ -3,7 +3,7 @@
   h4 Deine Antwort:
   katex(v-bind:tex="data.answerTeX")
   h4 Musterlösung:
-  katex(v-bind:tex="data.answerTeX")
+  katex(v-bind:tex="data.solutionTeX")
   h4 Auswertung:
   .result-header.pass(v-if="data.result.pass") Das Ergebnis ist korrekt:
   .result-header.fail(v-else) Das Ergebnis ist nicht korrekt:
