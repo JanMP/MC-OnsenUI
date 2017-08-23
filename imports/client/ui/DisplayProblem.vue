@@ -2,7 +2,7 @@
 .problem-display-container
   h3 {{problem.title}}
   p {{problem.description}}
-  math-display(v-if="!problem.skipExpression" v-bind:math="problem.problemTeX")
+  katex(v-if="!problem.skipExpression" v-bind:tex="problem.problemTeX")
   div(style="text-align : center")
     geometry-draw-display(v-if="drawSVG" v-bind:data="problem.geometryDrawData")
     function-plot-display(v-if="drawFunctionPlot" v-bind:data="problem.functionPlotData")
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="coffee">
-import MathDisplay from "./MathDisplay.vue"
+import Katex from "./Katex.vue"
 import GeometryDrawDisplay from "./GeometryDrawDisplay.vue"
 import FunctionPlotDisplay from "./FunctionPlotDisplay.vue"
 return
@@ -18,7 +18,7 @@ return
     drawSVG : -> @problem?.geometryDrawData?
     drawFunctionPlot : -> @problem?.functionPlotData?
   props : ["problem"]
-  components : { MathDisplay, GeometryDrawDisplay, FunctionPlotDisplay }
+  components : { Katex, GeometryDrawDisplay, FunctionPlotDisplay }
 </script>
 
 <style scoped lang="sass">

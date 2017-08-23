@@ -15,7 +15,6 @@ v-ons-page
 <script lang="coffee">
 import { Problem } from "/imports/client/mathproblems/mathproblems.coffee"
 import { insertSubmission } from "/imports/api/submissions.coffee"
-import MathDisplay from "./MathDisplay.vue"
 import DisplayProblem from "./DisplayProblem.vue"
 import DisplayResult from "./DisplayResult.vue"
 import MathMobileInput from "./MathMobileInput.vue"
@@ -74,7 +73,7 @@ return
     checkAnswer : ->
       @result = @problem.checkAnswer @answer
       @answered = true
-  components : { DisplayProblem, DisplayResult, MathDisplay, MathMobileInput }
+  components : { DisplayProblem, DisplayResult, MathMobileInput }
 
 </script>
 

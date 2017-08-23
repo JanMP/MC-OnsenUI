@@ -47,8 +47,10 @@ return
   methods :
     signIn : ->
       @$store.dispatch "loginUser", @userData
+      .then null, (reason) => @$ons.notification.toast reason
     signUp : ->
       @$store.dispatch "createUser", @userData
+      .then null, (reason) => @$ons.notification.toast reason
     signOut : ->
       @$store.dispatch "logoutUser"
   computed :

@@ -9,15 +9,25 @@ export default authModule =
       state.user = value
   actions :
     createUser : ( {commit, state }, options ) ->
-      Accounts.createUser options, (error) ->
-        console.log if error?
-          error.reason
-        else
-          "#{options.username} signed-up"
+      new Promise (resolve, reject) ->
+        Accounts.createUser options, (error) ->
+          if error?
+            console.log error.reason
+            reject error.reason
+          else
+            console.log "#{options.username} signed-up"
+            resolve()
     loginUser : ( {commit, state }, options ) ->
-      Meteor.loginWithPassword options.username, options.password, (error) ->
-        console.log if error?
-          error.reason
-        else
-          "#{options.username} signed-in"
-    logoutUser : -> Meteor.logout -> console.log "user signed-out"
+      new Promise (resolve, reject) ->
+        Meteor.loginWithPassword options.username, options.password, (error) ->
+          if error?
+            console.log error.reason
+            reject error.reason
+          else
+            "#{options.username} signed-in"
+            resolve()
+    logoutUser : ->
+      new Promise (resolve, reject) ->
+        Meteor.logout ->
+          console.log "user signed-out"
+          resolve()

@@ -1,9 +1,9 @@
 <template lang="jade">
 .result-display-container
   h4 Deine Antwort:
-  math-display(v-bind:math="data.answerTeX")
+  katex(v-bind:tex="data.answerTeX")
   h4 Musterlösung:
-  math-display(v-bind:math="data.solutionTeX")
+  katex(v-bind:tex="data.answerTeX")
   h4 Auswertung:
   .result-header.pass(v-if="data.result.pass") Das Ergebnis ist korrekt:
   .result-header.fail(v-else) Das Ergebnis ist nicht korrekt:
@@ -27,12 +27,12 @@
 </template>
 
 <script lang="coffee">
-import MathDisplay from "./MathDisplay.vue"
+import Katex from "./Katex.vue"
 return
   data : ->
     test : "Test 123123"
   props : ["data"]
-  components : { MathDisplay }
+  components : { Katex }
 </script>
 
 <style scoped lang="sass">

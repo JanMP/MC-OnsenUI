@@ -24,7 +24,6 @@
 
 <script lang="coffee">
 #import { teXifyAM } from "/imports/client/mathproblems/renderAM.coffee"
-import MathDisplay from "./MathDisplay.vue"
 return
   data : ->
     keys : [
@@ -98,7 +97,6 @@ return
     incLevel : ->
       @$emit "incLevel"
   props : ["math", "solution", "level"]
-  components : {MathDisplay}
 </script>
 
 <style scoped lang="sass">
