@@ -29,8 +29,6 @@
 <script lang="coffee">
 import Katex from "./Katex.vue"
 return
-  data : ->
-    test : "Test 123123"
   props : ["data"]
   components : { Katex }
 </script>

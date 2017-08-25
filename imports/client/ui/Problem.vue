@@ -61,8 +61,7 @@ return
           date : new Date()
           problem : @problem.problemTeX
           answer : @answer
-        insertSubmission.call submissionData
-
+        insertSubmission.call submissionDat
     setInputHeight : (height) -> @inputHeight = height
     incLevel : ->
       @level +=1
@@ -74,7 +73,6 @@ return
       @result = @problem.checkAnswer @answer
       @answered = true
   components : { DisplayProblem, DisplayResult, MathMobileInput }
-
 </script>
 
 <style scoped lang="sass">
