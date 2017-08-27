@@ -27,7 +27,7 @@
 </template>
 
 <script lang="coffee">
-import Katex from "./Katex.vue"
+import Katex from "/imports/client/ui/common/Katex.vue"
 return
   props : ["data"]
   components : { Katex }

@@ -1,38 +1,21 @@
-<template lang="jade">
-v-ons-page
-  custom-toolbar(title="Aufgabe")
-  .content(v-bind:style="'bottom : '+inputHeight")
-    display-problem(v-bind:problem="problem")
-    template(v-if="answered")
-      display-result(v-bind:data="resultDisplayData")
-  v-ons-bottom-toolbar(v-if="answered" style="height : 44px")
-    v-ons-button(modifier="large quiet" @click="getNewProblem") Neue Aufgabe
-  v-ons-bottom-toolbar(v-else v-bind:style="'height : '+inputHeight")
-    math-mobile-input(v-bind:math="answer" v-bind:level="problem.level" v-bind:solution="problem.solution" @submit="answer => submit(answer)" @incLevel="incLevel" @decLevel="decLevel" @setHeight="height => setInputHeight(height)")
-
-</template>
-
-<script lang="coffee">
 import { Problem } from "/imports/client/mathproblems/mathproblems.coffee"
 import { insertSubmission } from "/imports/api/submissions.coffee"
-import DisplayProblem from "./DisplayProblem.vue"
-import DisplayResult from "./DisplayResult.vue"
-import MathMobileInput from "./MathMobileInput.vue"
 import { teXifyAM } from "/imports/client/mathproblems/renderAM.coffee"
 import _ from "lodash"
-return
+
+export default mixin =
   data : ->
     problem : {}
     level : 1
     answer : ""
     answered : false
-    inputHeight : "44px"
     result :
       pass : true
       passTextsRequired : []
       passTextsOptional : []
       failTextsRequired : []
       failTextsOptional : []
+    inputHeight : "370px"
   created : -> @getNewProblem()
   computed :
     moduleKey : -> @$store.state.navigator.moduleKey
@@ -59,9 +42,9 @@ return
         submissionData = Object.assign obj,
           answerCorrect : @result.pass
           date : new Date()
-          problem : @problem.problemTeX
+          problemTeX : @problem.problemTeX
           answer : @answer
-        insertSubmission.call submissionDat
+        insertSubmission.call submissionData
     setInputHeight : (height) -> @inputHeight = height
     incLevel : ->
       @level +=1
@@ -72,16 +55,3 @@ return
     checkAnswer : ->
       @result = @problem.checkAnswer @answer
       @answered = true
-  components : { DisplayProblem, DisplayResult, MathMobileInput }
-</script>
-
-<style scoped lang="sass">
-.problem-container
-  margin : 0 auto 0 auto
-.relative
-  position : static
-.bottom
-  position : fixed
-  bottom : 0
-  width : 100%
-</style>

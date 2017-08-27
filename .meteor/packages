@@ -39,3 +39,5 @@ akryum:vue-jade
 akryum:vue-coffee
 akryum:vue-sass
 akryum:vue-router2
+dynamic-import
+jquery

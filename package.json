@@ -9,6 +9,7 @@
     "bcrypt": "^1.0.2",
     "chartist": "^0.11.0",
     "d3": "^3.5.17",
+    "element-ui": "^1.4.3",
     "function-plot": "^1.18.1",
     "katex": "^0.8.2",
     "lodash": "^4.17.4",

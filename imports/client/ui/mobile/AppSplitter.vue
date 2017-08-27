@@ -27,9 +27,6 @@ return
       set : (newValue) -> @$store.commit "menu/toggle", newValue
     selected : -> @$store.state.menu.selected
   components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage}
-  meteor :
-    meteorUser : ->
-      @$store.commit "updateUser", Meteor.user()
 </script>
 
 <style scoped lang="sass">
@@ -39,5 +36,4 @@ return
 .button-group
   .button
     margin-right : 3px
-
 </style>
