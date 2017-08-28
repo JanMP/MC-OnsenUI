@@ -1,7 +1,7 @@
 <template lang="jade">
 .site
   .header
-    .title MatheCoach
+    h1 MatheCoach
   .site-content()
     el-menu.menu-view(v-bind:router="true" default-active="/")
       el-menu-item(index="/login")
@@ -46,18 +46,24 @@ body
   font-size : 1.1em
 .main-view
   flex : 1
-  padding : 10px
+  padding : 5px
 .header
-  background-color : #475669
-  padding : .5em
-  .title
-    color : white
-    font-size : 1.5em
+  background-color : #20A0FF
+  padding : 15px
+  color : white
 .footer
-  background-color : #475669
+  background-color : #20A0FF
   padding : .5em
   text-align : center
   .message
     color : white
     font-size : .8em
+.text-container
+  max-width : 600px
+  padding : 20px
+h1, h2, h3, h4, h5, h6
+  margin : 0
+  padding : 0
+p
+  margin : .4em 0 .2em 0
 </style>

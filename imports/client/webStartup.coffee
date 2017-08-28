@@ -22,6 +22,7 @@ RouterFactory.configure (router) ->
   router.addRoutes routes
 
 Meteor.startup ->
+  $('head').append "<link rel='stylesheet' href='katex/katex.min.css'/>"
   Vue.use ElementUI, { locale }
   Vue.component "markdown", VueMarkdown
   Vue.component "icon", Icon

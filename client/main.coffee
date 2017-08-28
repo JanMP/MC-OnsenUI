@@ -8,9 +8,9 @@ require "/imports/api/chatMessages.coffee"
 require "/imports/api/activityGraphs.coffee"
 require "/imports/api/publications.coffee"
 
-runMobile = false
+runMobile = true
 
-if Meteor.isCordova
+if Meteor.isCordova or (Meteor.isDevelopment and runMobile)
   require "/imports/client/mobileStartup.coffee"
 else
   require "/imports/client/webStartup.coffee"

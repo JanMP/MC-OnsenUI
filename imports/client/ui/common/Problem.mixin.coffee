@@ -15,7 +15,7 @@ export default mixin =
       passTextsOptional : []
       failTextsRequired : []
       failTextsOptional : []
-    inputHeight : "370px"
+    # inputHeight : "370px"
   created : -> @getNewProblem()
   computed :
     moduleKey : -> @$store.state.navigator.moduleKey
@@ -30,9 +30,9 @@ export default mixin =
       @problem = new Problem @moduleKey, @level
       @level = @problem.level
       @answer = ""
-    submit : (answer) ->
-      @answer = answer
-      @inputHeight = "44px"
+    submit : ->
+      #@answer = answer
+      #@inputHeight = "44px"
       @checkAnswer()
       if Meteor.userId()
         obj = _.pick @problem, [
@@ -45,7 +45,7 @@ export default mixin =
           problemTeX : @problem.problemTeX
           answer : @answer
         insertSubmission.call submissionData
-    setInputHeight : (height) -> @inputHeight = height
+    #setInputHeight : (height) -> @inputHeight = height
     incLevel : ->
       @level +=1
       @getNewProblem()

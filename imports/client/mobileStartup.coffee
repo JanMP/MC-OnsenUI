@@ -13,7 +13,9 @@ import CustomToolbar from '/imports/client/ui/mobile/CustomToolbar.vue'
 
 Meteor.startup ->
   $('head').append "<link rel='stylesheet' href='onsenui/css/onsenui.css'/>"
-  $('head').append "<link rel='stylesheet' href='onsenui/css/onsen-css-components.css'/>"
+  $('head').append "<link rel='stylesheet' \
+    href='onsenui/css/onsen-css-components.css'/>"
+  $('head').append "<link rel='stylesheet' href='katex/katex.min.css'/>"
   Vue.use VueOnsen
   Vue.component "markdown", VueMarkdown
   Vue.component "custom-toolbar", CustomToolbar

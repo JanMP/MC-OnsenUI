@@ -1,5 +1,5 @@
 <template lang="jade">
-.problem-display-container
+div
   h3 {{problem.title}}
   p {{problem.description}}
   katex(v-if="!problem.skipExpression" v-bind:tex="problem.problemTeX")
@@ -22,8 +22,6 @@ return
 </script>
 
 <style scoped lang="sass">
-.problem-display-container
-  padding : 10px
 .center
   text-align : center
 </style>

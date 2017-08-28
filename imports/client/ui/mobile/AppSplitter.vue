@@ -29,10 +29,12 @@ return
   components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage}
 </script>
 
-<style scoped lang="sass">
-.container
-  text-align : center
-  margin : 20px auto 0 auto
+<style lang="sass">
+.text-container
+  padding : 10px
+h1, h2, h3, h4, h5, h6
+  margin : 0
+  padding : 0
 .button-group
   .button
     margin-right : 3px

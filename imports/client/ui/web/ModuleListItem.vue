@@ -31,7 +31,7 @@ return
 .module-list-header
   margin : 5px 0 5px 0
   padding : 10px
-  background-color : #8492A6
+  background-color : #58B7FF
   color : white
   h2
     margin : 0

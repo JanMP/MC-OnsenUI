@@ -1,5 +1,5 @@
 <template lang="jade">
-.result-display-container
+.result-container
   h4 Deine Antwort:
   katex(v-bind:tex="data.answerTeX")
   h4 Musterlösung:
@@ -34,8 +34,6 @@ return
 </script>
 
 <style scoped lang="sass">
-.result-display-container
-  padding : 10px
 .result-header
   font-size : 1.2em
   color : white
