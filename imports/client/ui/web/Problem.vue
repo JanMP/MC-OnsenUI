@@ -35,6 +35,8 @@ return
       @submit()
       @$nextTick ->
         @$refs.nextButton.$el.focus()
+    help : ->
+      console.log "help!"
   mounted : ->
     @$refs.elForm.$el.onsubmit = (event) =>
       event.preventDefault()

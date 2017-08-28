@@ -9,17 +9,25 @@
     .result-header.pass(v-if="data.result.pass") Das Ergebnis ist korrekt:
     .result-header.fail(v-else) Das Ergebnis ist nicht korrekt:
     .fail-text(v-for="text in data.result.passTextsRequired" key="text")
-      icon.icon.pass(name="check")
-      |{{text}}
+      .icon-box
+        icon.icon.pass(name="check")
+      .description-box
+        {{text}}
     .fail-text(v-for="text in data.result.passTextsOptional" key="text")
-      icon.icon.pass(name="check")
-      |{{text}}
+      .icon-box
+        icon.icon.pass(name="check")
+      .description-box
+        {{text}}
     .fail-text(v-for="text in data.result.failTextsRequired" key="text")
-      icon.icon.fail(name="times")
-      |{{text}}
+      .icon-box
+        icon.icon.fail(name="times")
+      .description-box
+        {{text}}
     .fail-text(v-for="text in data.result.failTextsOptional" key="text")
-      icon.icon.warn(name="times")
-      |{{text}}
+      .icon-box
+        icon.icon.warn(name="times")
+      .description-box
+        {{text}}
 </template>
 
 <script lang="coffee">
@@ -46,11 +54,19 @@ return
   &.pass
     background-color : #13CE66
 .fail-text
-  padding : 10px 10px 10px 20px
+  padding : 10px 10px 10px 15px
+  display : flex
+  flex-direction : row
+  align-items : center
+.description-box
+  flex : 1
+  padding-left : 10px
+  font-size : .8em
+.icon-box
+  flex : 0 1.5em
 .icon
-  width : 1.3em
-  height : 1.3em
-  margin-right : 20px
+  width : 1.5em
+  height : 1.5em
   &.fail
     color : #FF4949
   &.pass
