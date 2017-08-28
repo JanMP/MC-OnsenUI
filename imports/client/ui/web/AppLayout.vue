@@ -3,7 +3,7 @@
   .header
     h1 MatheCoach
   .site-content()
-    el-menu.menu-view(v-bind:router="true" default-active="/")
+    el-menu.menu-view(v-bind:router="true" v-bind:default-active="active")
       el-menu-item(index="/login")
         icon.front(name="sign-in" scale="1.3")
         |Sign-In
@@ -20,6 +20,13 @@
 </template>
 
 <script lang="coffee">
+return
+  data : ->
+    active : ""
+  mounted : ->
+    console.log @$route
+    if @$route.path in ["/login", "/", "/aufgaben"]
+      @active = @$route.path
 </script>
 
 <style lang="sass">
