@@ -1,0 +1,57 @@
+<template lang="jade">
+div
+  .ct-chart.ct-perfect-fourth(ref="chart")
+</template>
+
+<script lang="coffee">
+import Chartist from "chartist"
+import "chartist/dist/chartist.css"
+import _ from "lodash"
+return
+  computed :
+    chartData : ->
+      labelFormat = "D.M."
+      submissions = @submissions.map (submission) ->
+        date :
+          moment(submission.date)
+          .startOf("day")
+          .format(labelFormat)
+        answerCorrect : submission.answerCorrect
+      labels = []
+      series1 = []
+      series2 = []
+      for daysAgo in [15..0]
+        date =
+          moment()
+          .subtract(daysAgo, "days")
+          .startOf("day")
+          .format(labelFormat)
+        submissionsThatDay =
+          _(submissions)
+          .filter date : date
+          .countBy (submission) -> submission.answerCorrect
+          .value()
+        labels.push date
+        series1.push submissionsThatDay[true] ? 0
+        series2.push submissionsThatDay[false] ? 0
+      #return
+      labels : labels
+      series : [series1, series2]
+  methods :
+    renderChart : ->
+      new Chartist.Bar @$refs.chart, @chartData,
+        stackBars : true
+        axisY :
+          onlyInteger : true
+  watch :
+    chartData : -> @renderChart()
+  mounted : -> @renderChart()
+  props : ["submissions"]
+</script>
+
+<style lang="sass">
+.ct-series-a .ct-bar
+  stroke: #13CE66
+.ct-series-b .ct-bar
+  stroke: #FF4949
+</style>

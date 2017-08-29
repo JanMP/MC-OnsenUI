@@ -13,6 +13,9 @@
       el-menu-item(index="/aufgaben")
         icon.front(name="list" scale="1.3")
         |Aufgaben
+      el-menu-item(index="/statistik")
+        icon.front(name="bar-chart" scale="1.3")
+        |Meine Statistik
     router-view.main-view
   .footer
     .message MatheCoach © 2016 Jan Pilgenröder
@@ -24,8 +27,7 @@ return
   data : ->
     active : ""
   mounted : ->
-    console.log @$route
-    if @$route.path in ["/login", "/", "/aufgaben"]
+    if @$route.path in ["/login", "/", "/aufgaben", "/statistik"]
       @active = @$route.path
 </script>
 
@@ -51,6 +53,8 @@ body
   flex : 0 160px
 .el-menu-item
   font-size : 1.1em
+  height : 45px
+  line-height : 45px
 .main-view
   flex : 1
   padding : 5px

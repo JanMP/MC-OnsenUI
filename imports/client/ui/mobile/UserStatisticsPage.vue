@@ -9,7 +9,7 @@ v-ons-page
 <script lang="coffee">
 import { Meteor } from "meteor/meteor"
 import { Submissions } from "/imports/api/submissions.coffee"
-import UserBarPlot from "./UserBarPlot.vue"
+import UserBarPlot from "/imports/client/ui/common/UserBarPlot.vue"
 return
   meteor :
     submissions : -> Submissions.find(userId : Meteor.userId()).fetch()
