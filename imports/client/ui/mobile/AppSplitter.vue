@@ -1,7 +1,7 @@
 <template lang="jade">
 v-ons-page
   v-ons-splitter
-    v-ons-splitter-side(swipeable collapse="" width="200px" side="right" animation="reveal" v-bind:open.sync="showMenu")
+    v-ons-splitter-side(swipeable v-bind:animation="animation" collapse width="200px" side="right" v-bind:open.sync="showMenu")
       menu-page
     v-ons-splitter-content
       app-navigator(v-show="selected === 'modules'")
@@ -22,6 +22,8 @@ return
   created : ->
     @$ons.disableAutoStatusBarFill()
   computed :
+    animation : ->
+      if @$ons.platform.isIOS() then "reveal" else "overlay"
     showMenu :
       get : -> @$store.state.menu.showMenu
       set : (newValue) -> @$store.commit "menu/toggle", newValue

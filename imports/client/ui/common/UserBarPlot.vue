@@ -1,6 +1,5 @@
 <template lang="jade">
-div
-  .ct-chart.ct-perfect-fourth(ref="chart")
+.ct-chart.ct-perfect-fourth(ref="chart")
 </template>
 
 <script lang="coffee">
@@ -39,14 +38,16 @@ return
       series : [series1, series2]
   methods :
     renderChart : ->
-      new Chartist.Bar @$refs.chart, @chartData,
+      chartOptions = Object.assign {}, @options,
         stackBars : true
         axisY :
           onlyInteger : true
+      new Chartist.Bar @$refs.chart, @chartData, chartOptions
   watch :
     chartData : -> @renderChart()
+    options : -> @renderChart()
   mounted : -> @renderChart()
-  props : ["submissions"]
+  props : ["submissions", "options"]
 </script>
 
 <style lang="sass">

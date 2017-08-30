@@ -47,10 +47,10 @@ return
   methods :
     signIn : ->
       @$store.dispatch "loginUser", @userData
-      .then null, (reason) => @$ons.notification.toast reason
+      .then null, (reason) => @$ons.notification.toast reason, timeout : 2000
     signUp : ->
       @$store.dispatch "createUser", @userData
-      .then null, (reason) => @$ons.notification.toast reason
+      .then null, (reason) => @$ons.notification.toast reason, timeout : 2000
     signOut : ->
       @$store.dispatch "logoutUser"
   computed :

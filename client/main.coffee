@@ -12,7 +12,6 @@ MobileDetect = require "mobile-detect"
 
 runMobile = false
 mobile = (new MobileDetect window.navigator.userAgent).mobile()
-console.log "mobile", mobile
 
 if Meteor.isCordova or mobile or (Meteor.isDevelopment and runMobile)
   require "/imports/client/mobileStartup.coffee"
