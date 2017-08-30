@@ -12,22 +12,15 @@ import UserBarPlot from "/imports/client/ui/common/UserBarPlot.vue"
 return
   data : ->
     chartOptions : {}
-  mounted : -> @setChartOptions()
+  mounted : ->
+    @setChartOptions()
+    window.addEventListener "resize", @setChartOptions
   methods :
     setChartOptions : ->
-      e = @$refs.content
-      @chartOptions =
-        width : "#{e.clientWidth-20}px"
-        height : "#{e.clientHeight-60}px"
-        horizontalBars : @$ons.orientation.isPortrait()
-  computed :
-    isPortrait : -> @$ons.orientation.isPortrait()
-  watch :
-    isPortrait : ->
-      console.log "flip it"
-      @$nextTick ->
-        console.log "flip it"
-        @setChartOptions()
+      if e = @$refs.content
+        @chartOptions =
+          width : "#{e.clientWidth-20}px"
+          height : "#{e.clientHeight-20}px"
   meteor :
     submissions : -> Submissions.find(userId : Meteor.userId()).fetch()
   components : { UserBarPlot }

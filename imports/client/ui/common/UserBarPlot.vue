@@ -7,6 +7,14 @@ import Chartist from "chartist"
 import "chartist/dist/chartist.css"
 import _ from "lodash"
 return
+  data : ->
+    responsiveOptions : [
+      [
+        "screen and (orientation:portrait)"
+      ,
+        horizontalBars: true
+      ]
+    ]
   computed :
     chartData : ->
       labelFormat = "D.M."
@@ -42,7 +50,7 @@ return
         stackBars : true
         axisY :
           onlyInteger : true
-      new Chartist.Bar @$refs.chart, @chartData, chartOptions
+      new Chartist.Bar @$refs.chart, @chartData, chartOptions, @responsiveOptions
   watch :
     chartData : -> @renderChart()
     options : -> @renderChart()
