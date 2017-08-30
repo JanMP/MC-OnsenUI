@@ -8,9 +8,13 @@ require "/imports/api/chatMessages.coffee"
 require "/imports/api/activityGraphs.coffee"
 require "/imports/api/publications.coffee"
 
-runMobile = false
+MobileDetect = require "mobile-detect"
 
-if Meteor.isCordova or (Meteor.isDevelopment and runMobile)
+runMobile = false
+mobile = (new MobileDetect window.navigator.userAgent).mobile()
+console.log "mobile", mobile
+
+if Meteor.isCordova or mobile or (Meteor.isDevelopment and runMobile)
   require "/imports/client/mobileStartup.coffee"
 else
   require "/imports/client/webStartup.coffee"

@@ -5,11 +5,9 @@ import storeDef from '/imports/client/store/store.coffee'
 import VueMarkdown from "vue-markdown"
 
 # import '/imports/client/ui/mobile/main.css'
-
 import VueOnsen from 'vue-onsenui'
 import AppSplitter from '/imports/client/ui/mobile/AppSplitter.vue'
 import CustomToolbar from '/imports/client/ui/mobile/CustomToolbar.vue'
-
 
 Meteor.startup ->
   $('head').append "<link rel='stylesheet' href='onsenui/css/onsenui.css'/>"
