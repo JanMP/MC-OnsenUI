@@ -58,7 +58,7 @@ return
   props : ["submissions", "options"]
 </script>
 
-<style lang="sass">
+<style scoped lang="sass">
 .ct-series-a .ct-bar
   stroke: #13CE66
 .ct-series-b .ct-bar

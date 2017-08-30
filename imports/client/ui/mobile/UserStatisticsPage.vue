@@ -13,8 +13,10 @@ return
   data : ->
     chartOptions : {}
   mounted : ->
-    @setChartOptions()
     window.addEventListener "resize", @setChartOptions
+    @$nextTick @setChartOptions
+  beforeDestroy : ->
+    window.removeEventListener "resize", @setChartOptions
   methods :
     setChartOptions : ->
       if e = @$refs.content
