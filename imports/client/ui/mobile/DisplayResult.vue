@@ -39,7 +39,7 @@ return
   color : white
   padding : 10px
 .fail
-  background-color : red
+  background-color : #FF4949
 .pass
-  background-color : green
+  background-color : #13CE66
 </style>
