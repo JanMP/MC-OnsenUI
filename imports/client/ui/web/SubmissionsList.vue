@@ -1,12 +1,10 @@
 <template lang="jade">
 div
-  el-dialog(
-    title="Ergebnis"
-    v-bind:visible.sync="dialogVisible"
-  )
+  el-dialog(title="Ergebnis" v-bind:visible.sync="dialogVisible")
     display-submission(v-bind:submission="selectedSubmission")
+
   data-tables(
-    v-bind:data="submissions"
+    v-bind:data="pimpedSubmissions"
     v-bind:table-props="tableProps"
     v-bind:search-def="searchDef"
     v-bind:pagination-def="paginationDef"
@@ -16,8 +14,7 @@ div
       label="Datum" prop="date" sortable="custom" v-bind:formatter="dateFormatter"
     )
     el-table-column(
-      label="Modul" prop="moduleKey" sortable="custom"
-      v-bind:formatter="moduleTitle"
+      label="Modul" prop="moduleTitle" sortable="custom"
     )
     el-table-column(
       label="Level" prop="level" sortable="custom"
@@ -41,20 +38,18 @@ return
         prop : "date"
         order : "descending"
     searchDef :
-      props : ["moduleKey"]
+      props : ["moduleTitle"]
     paginationDef :
       pageSize : 10
       pageSizes : [10, 20, 50, 100, 500]
   computed :
-    tableData : ->
-      start = (@currentPage-1)*@pageSize
-      end=Math.min @currentPage*@pageSize, @submissions.length-1
-      console.log start, end
-      @submissions[start..end]
+    pimpedSubmissions : ->
+      @submissions.map (submission) ->
+        submission.moduleTitle = getModuleTitle submission.moduleKey
+        submission
   methods :
     dateFormatter : (row) ->
       moment(row.date).fromNow()
-    moduleTitle : (row) -> getModuleTitle row.moduleKey
     answerCorrectFormatter : (row) ->
       if row.answerCorrect then "Korrekt" else "Nicht Korrekt"
     onRowClick : (row) ->
