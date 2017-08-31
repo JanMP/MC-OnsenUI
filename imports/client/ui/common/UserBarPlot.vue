@@ -4,7 +4,6 @@
 
 <script lang="coffee">
 import Chartist from "chartist"
-import "chartist/dist/chartist.css"
 import _ from "lodash"
 return
   data : ->
@@ -58,7 +57,7 @@ return
   props : ["submissions", "options"]
 </script>
 
-<style scoped lang="sass">
+<style lang="sass">
 .ct-series-a .ct-bar
   stroke: #13CE66
 .ct-series-b .ct-bar
