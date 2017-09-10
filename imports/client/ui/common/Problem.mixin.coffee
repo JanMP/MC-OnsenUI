@@ -33,16 +33,19 @@ export default mixin =
     submit : ->
       #@answer = answer
       #@inputHeight = "44px"
+      console.log @problem.geometryDrawData
       @checkAnswer()
       if Meteor.userId()
         obj = _.pick @problem, [
-          "moduleKey", "level", "score", "description", "skipExpression",
-          "SVGData", "functionData"
+          "moduleKey", "level", "score", "description", "skipExpression"
+          #"geometryDrawData", "functionPlotData"
         ]
-        submissionData = Object.assign obj,
+        console.log submissionData = Object.assign obj,
           answerCorrect : @result.pass
           date : new Date()
           problemTeX : @problem.problemTeX
+          SVGData : @problem.geometryDrawData
+          functionData : @problem.functionPlotData
           answer : @answer
         insertSubmission.call submissionData
     #setInputHeight : (height) -> @inputHeight = height
