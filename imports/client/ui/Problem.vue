@@ -13,9 +13,9 @@ v-ons-page
 </template>
 
 <script lang="coffee">
-import DisplayProblem from "/imports/client/ui/common/DisplayProblem.vue"
+import DisplayProblem from "/imports/client/ui/DisplayProblem.vue"
 import DisplayResult from "./DisplayResult.vue"
-import problemMixin from "/imports/client/ui/common/Problem.mixin.coffee"
+import problemMixin from "/imports/client/ui/Problem.mixin.coffee"
 import MathMobileInput from "./MathMobileInput.vue"
 return
   data : ->
