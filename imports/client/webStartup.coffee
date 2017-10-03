@@ -25,7 +25,7 @@ RouterFactory.configure (router) ->
 
 Meteor.startup ->
   $('head').append "<link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-default/index.css'>"
-  $('head').append "<link rel='stylesheet' href='katex/katex.min.css'/>"
+  $('head').append "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css'/>"
   Vue.use ElementUI, { locale }
   Vue.use DataTables
   Vue.component "markdown", VueMarkdown

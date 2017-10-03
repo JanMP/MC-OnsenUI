@@ -4,7 +4,7 @@
     ### MatheCoach mit neuer Benutzeroberfläche
     Ich bin dabei, die Benutzeroberfläche für MatheCoach komplett neu zu schreiben. Das hat vor allem technische Gründe.
 
-    * Die neue Version nutzt ein anderes JavaScript Framework für den Aufbau Seiteninhalte.
+    * Die neue Version nutzt ein anderes JavaScript Framework für den Aufbau der Seiteninhalte.
     * Mit dem neuen System habe ich die Möglichkeit, neben der Webseitendarstellung eine Oberfläche für iOS bzw. Android zu programmieren und dabei teilweise den gleichen Programmcode zu verwenden.
     * Ich kann HTML/CSS Frameworks benutzen, die mir einige Arbeit abnehmen.
     * Der Programmcode wird für mich übersichtlicher und langfristig besser wartbar.
