@@ -8,7 +8,7 @@ v-ons-page
 <script lang="coffee">
 import { Meteor } from "meteor/meteor"
 import { Submissions } from "/imports/api/submissions.coffee"
-import UserBarPlot from "/imports/client/ui/common/UserBarPlot.vue"
+import UserBarPlot from "/imports/client/ui/UserBarPlot.vue"
 return
   data : ->
     chartOptions : {}

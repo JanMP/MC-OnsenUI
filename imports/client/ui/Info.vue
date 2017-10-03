@@ -6,7 +6,7 @@ v-ons-page
 </template>
 
 <script lang="coffee">
-import News from "/imports/client/ui/common/News.vue"
+import News from "/imports/client/ui/News.vue"
 return
   components : { News }
 </script>

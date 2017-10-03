@@ -10,9 +10,9 @@ div
 </template>
 
 <script lang="coffee">
-import Katex from "/imports/client/ui/common/Katex.vue"
-import GeometryDrawDisplay from "/imports/client/ui/common/GeometryDrawDisplay.vue"
-import FunctionPlotDisplay from "/imports/client/ui/common/FunctionPlotDisplay.vue"
+import Katex from "/imports/client/ui/Katex.vue"
+import GeometryDrawDisplay from "/imports/client/ui/GeometryDrawDisplay.vue"
+import FunctionPlotDisplay from "/imports/client/ui/FunctionPlotDisplay.vue"
 return
   computed :
     drawSVG : -> @problem?.geometryDrawData?
