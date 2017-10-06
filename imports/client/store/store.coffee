@@ -1,10 +1,12 @@
 import authModule from "./auth.coffee"
 
+strict = false
+
 export default store =
   modules :
     auth : authModule
     navigator :
-      strict : true
+      strict : strict
       namespaced : true
       state :
         stack : []
@@ -17,7 +19,7 @@ export default store =
         pop : (state) -> state.stack.pop() if state.stack.length > 1
         options : (state, newOptions = {}) -> state.options = newOptions
     menu :
-      strict : true
+      strict : strict
       namespaced : true
       state :
         showMenu : false
@@ -27,3 +29,18 @@ export default store =
           state.showMenu = newValue ? not state.showMenu
         select : (state, newValue) ->
           state.selected = newValue
+    unsolvedProblems :
+      strict : strict
+      namespaced : true
+      state :
+        problem : {}
+      mutations :
+        add : (state, newValue) ->
+          moduleKey = newValue.moduleKey
+          level = newValue.level
+          state.problem[moduleKey] ?= {}
+          state.problem[moduleKey][level] = newValue
+        remove : (state, newValue) ->
+          moduleKey = newValue.moduleKey
+          level = newValue.level
+          delete state.problem[moduleKey][level]

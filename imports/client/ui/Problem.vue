@@ -44,11 +44,24 @@ return
   methods :
     getNewProblem : ->
       @answered = false
-      @problem = new Problem @moduleKey, @level
-      @level = @problem.level
+      #get a new Problem to make sure level is valid
+      newProblem = new Problem @moduleKey, @level
+      @level = newProblem.level
+      storedProblem = @$store.state.unsolvedProblems?.problem?[@moduleKey]?[@level]
+      if storedProblem?
+        @problem = @$store.state.unsolvedProblems?.problem?[@moduleKey]?[@level]
+      else
+        @problem = newProblem
+        problemToStore = Object.assign @problem,
+          moduleKey : @moduleKey
+          level : @level
+        @$store.commit "unsolvedProblems/add", problemToStore
       @answer = ""
     submit : (answer) ->
       @answer = answer
+      @$store.commit "unsolvedProblems/remove",
+        moduleKey : @moduleKey
+        level : @level
       @inputHeight = "44px"
       @checkAnswer()
       if Meteor.userId()
