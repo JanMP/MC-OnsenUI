@@ -9,27 +9,67 @@ v-ons-page
   v-ons-bottom-toolbar(v-if="answered" style="height : 44px")
     v-ons-button(modifier="large quiet" @click="getNewProblem") Neue Aufgabe
   v-ons-bottom-toolbar(v-else v-bind:style="'height : '+inputHeight")
-    math-mobile-input(v-bind:math="answer" v-bind:level="problem.level" v-bind:solution="problem.solution" @submit="answer => submitMobile(answer)" @incLevel="incLevel" @decLevel="decLevel" @setHeight="height => setInputHeight(height)")
+    math-mobile-input(v-bind:math="answer" v-bind:level="problem.level" v-bind:solution="problem.solution" @submit="answer => submit(answer)" @incLevel="incLevel" @decLevel="decLevel" @setHeight="height => setInputHeight(height)")
 </template>
 
 <script lang="coffee">
+import { Problem } from "/imports/client/mathproblems/mathproblems.coffee"
+import { insertSubmission } from "/imports/api/submissions.coffee"
+import { teXifyAM } from "/imports/client/mathproblems/renderAM.coffee"
+import _ from "lodash"
 import DisplayProblem from "/imports/client/ui/DisplayProblem.vue"
 import DisplayResult from "./DisplayResult.vue"
-import problemMixin from "/imports/client/ui/Problem.mixin.coffee"
 import MathMobileInput from "./MathMobileInput.vue"
 return
   data : ->
+    problem : {}
+    level : 1
+    answer : ""
+    answered : false
+    result :
+      pass : true
+      passTextsRequired : []
+      passTextsOptional : []
+      failTextsRequired : []
+      failTextsOptional : []
     inputHeight : "370px"
-  mixins : [problemMixin]
+  created : -> @getNewProblem()
   computed :
     moduleKey : -> @$store.state.navigator.moduleKey
+    resultDisplayData : ->
+      result : @result
+      answer : @answer
+      answerTeX : teXifyAM @answer
+      solutionTeX : @problem.solutionTeX
   methods :
-    submitMobile : (answer) ->
+    getNewProblem : ->
+      @answered = false
+      @problem = new Problem @moduleKey, @level
+      @level = @problem.level
+      @answer = ""
+    submit : (answer) ->
       @answer = answer
       @inputHeight = "44px"
-      @submit()
+      @checkAnswer()
+      if Meteor.userId()
+        obj = _.pick @problem, [
+          "moduleKey", "level", "score", "description", "skipExpression", "geometryDrawData", "functionPlotData", "problemTeX"
+        ]
+        submissionData = Object.assign obj,
+          answerCorrect : @result.pass
+          date : new Date()
+          answer : @answer
+        insertSubmission.call submissionData
     setInputHeight : (height) -> @inputHeight = height
-
+    incLevel : ->
+      @level +=1
+      @getNewProblem()
+    decLevel : ->
+      @level -= 1
+      @getNewProblem()
+    checkAnswer : ->
+      @result = @problem.checkAnswer @answer
+      @answered = true
   components : { DisplayProblem, DisplayResult, MathMobileInput }
 </script>
 
