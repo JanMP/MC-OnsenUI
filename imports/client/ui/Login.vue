@@ -1,8 +1,9 @@
 <template lang="jade">
 v-ons-page
-  custom-toolbar(title="Sign-In")
+  custom-toolbar(v-bind:title="title")
   p
   div(v-if="currentUser")
+    settings
     .container
       p Signed-in als {{currentUser.username}}
       v-ons-button(@click="signOut") Sign-Out
@@ -37,6 +38,7 @@ v-ons-page
 </template>
 
 <script lang="coffee">
+import Settings from "./Settings.vue"
 return
   data : ->
     userData :
@@ -55,6 +57,8 @@ return
       @$store.dispatch "logoutUser"
   computed :
     currentUser : -> @$store.state.auth.user
+    title : -> if @currentUser then "Einstellungen" else "Sign-In"
+  components : { Settings }
 </script>
 
 <style scoped lang="sass">
