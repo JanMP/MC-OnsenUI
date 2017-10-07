@@ -7,3 +7,10 @@ require "/imports/api/submissions.coffee"
 require "/imports/api/chatMessages.coffee"
 require "/imports/api/activityGraphs.coffee"
 require "/imports/api/publications.coffee"
+
+Meteor.startup ->
+  admin = Meteor.users.findOne username : "admin"
+  if admin?
+    Roles.addUsersToRoles admin._id, [
+      "admin", "superAdmin"
+    ]
