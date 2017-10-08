@@ -47,19 +47,22 @@ return
     renderChart : ->
       chartOptions = Object.assign {}, @options,
         stackBars : true
-        axisY :
+        axisX :
           onlyInteger : true
-      new Chartist.Bar @$refs.chart, @chartData, chartOptions, @responsiveOptions
+      chart = new Chartist.Bar @$refs.chart, @chartData, chartOptions, @responsiveOptions
+      #css does or doesn't work, so we stick it in on the draw event
+      chart.on "draw", (context) ->
+        if context.type is "bar"
+          color = switch context.seriesIndex
+            when 0 then "#13CE66"
+            else "#FF4949"
+          context.element.attr style : "stroke : #{color}"
   watch :
     chartData : -> @renderChart()
     options : -> @renderChart()
-  mounted : -> @renderChart()
+  rendered : -> @renderChart()
   props : ["submissions", "options"]
 </script>
 
-<style skoped lang="sass">
-.ct-series-a .ct-bar
-  stroke: #13CE66
-.ct-series-b .ct-bar
-  stroke: #FF4949
+<style scoped lang="sass">
 </style>
