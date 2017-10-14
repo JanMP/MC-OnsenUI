@@ -24,6 +24,16 @@
       .left
         v-ons-icon.list-item__icon(fixed-width icon="fa-comments-o")
       .center Chat
+  v-ons-list-title(v-if="isAdmin") Verwalten
+  v-ons-list(v-if="isAdmin")
+    v-ons-list-item(@click="select('userList')")
+      .left
+        v-ons-icon.list-item__icon(fixed-width icon="fa-wrench")
+      .center Benutzer
+    v-ons-list-item(@click="select('schoolClassList')")
+      .left
+        v-ons-icon.list-item__icon(fixed-width icon="fa-wrench")
+      .center Klassen
   v-ons-list-title Information
   v-ons-list
     v-ons-list-item(@click="select('news')")
@@ -37,7 +47,9 @@
 </template>
 
 <script lang="coffee">
+import { roles } from "./mixins/roles.coffee"
 return
+  mixins : [roles]
   methods :
     select : (str) ->
       @$store.commit "menu/select", str
@@ -48,4 +60,6 @@ return
 .menu
   background-color : white
   height : 100vh
+.red
+  color : red
 </style>

@@ -1,6 +1,6 @@
 <template lang="jade">
 v-ons-page
-  custom-toolbar(title="Aufgabe")
+  custom-toolbar(title="Aufgabe" v-bind:showBackButton="true")
   .content(v-bind:style="'bottom : '+inputHeight")
     .text-container
       display-problem(v-bind:problem="problem")

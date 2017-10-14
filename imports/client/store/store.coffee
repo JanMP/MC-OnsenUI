@@ -18,6 +18,32 @@ export default store =
         unselectModule : (state) -> state.moduleKey = ""
         pop : (state) -> state.stack.pop() if state.stack.length > 1
         options : (state, newOptions = {}) -> state.options = newOptions
+    adminPanelUserNavigator :
+      strict : strict
+      namespaced : true
+      state :
+        stack : []
+        options : {}
+        userId : ""
+      mutations :
+        push : (state, page) -> state.stack.push page
+        selectUser : (state, userId) -> state.userId = userId
+        unselectUser : (state) -> state.userId = ""
+        pop : (state) -> state.stack.pop() if state.stack.length > 1
+        options : (state, newOptions = {}) -> state.options = newOptions
+    adminPanelSchoolClassNavigator :
+      strict : strict
+      namespaced : true
+      state :
+        stack : []
+        options : {}
+        schoolClassId : ""
+      mutations :
+        push : (state, page) -> state.stack.push page
+        selectSchoolClass : (state, id) -> state.schoolClassId = id
+        unselectSchoolClass : (state) -> state.schoolClassId = ""
+        pop : (state) -> state.stack.pop() if state.stack.length > 1
+        options : (state, newOptions = {}) -> state.options = newOptions
     menu :
       strict : strict
       namespaced : true

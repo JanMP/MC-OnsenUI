@@ -3,7 +3,7 @@ v-ons-page
   custom-toolbar(v-bind:title="title")
   p
   div(v-if="currentUser")
-    settings
+    UserSettingsPage(v-bind:userId="currentUser._id")
     .container
       p Signed-in als {{currentUser.username}}
       v-ons-button(@click="signOut") Sign-Out
@@ -38,7 +38,7 @@ v-ons-page
 </template>
 
 <script lang="coffee">
-import Settings from "./Settings.vue"
+import UserSettingsPage from "./UserSettingsPage.vue"
 return
   data : ->
     userData :
@@ -58,7 +58,7 @@ return
   computed :
     currentUser : -> @$store.state.auth.user
     title : -> if @currentUser then "Einstellungen" else "Sign-In"
-  components : { Settings }
+  components : { UserSettingsPage }
 </script>
 
 <style scoped lang="sass">
