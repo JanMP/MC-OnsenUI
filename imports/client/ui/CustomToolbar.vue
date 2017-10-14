@@ -10,14 +10,16 @@ v-ons-toolbar
 
 <script lang="coffee">
 return
-  computed :
-    showBackButton : ->
-      @$store.state.menu.selected is "modules" and @$store.state.navigator.stack.length > 1
+
   methods :
     toggleMenu : ->
       console.log @$store.state.menu.selected
       @$store.commit "menu/toggle"
-  props : ["title"]
+  props :
+    title : String
+    showBackButton :
+      type : Boolean
+      default : -> false
 </script>
 
 <style scoped lang="sass">

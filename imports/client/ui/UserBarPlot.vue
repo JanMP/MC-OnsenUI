@@ -50,7 +50,7 @@ return
         axisX :
           onlyInteger : true
       chart = new Chartist.Bar @$refs.chart, @chartData, chartOptions, @responsiveOptions
-      #css does or doesn't work, so we stick it in on the draw event
+      #since css doesn't work reliably we gotta shove it up chartist's draw event
       chart.on "draw", (context) ->
         if context.type is "bar"
           color = switch context.seriesIndex

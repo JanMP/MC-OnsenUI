@@ -1,13 +1,15 @@
 <template lang="jade">
-v-ons-page
-  v-ons-splitter
-    v-ons-splitter-side(swipeable v-bind:animation="animation" collapse width="200px" side="right" v-bind:open.sync="showMenu")
-      menu-page
-    v-ons-splitter-content
-      app-navigator(v-show="selected === 'modules'")
-      info(v-if="selected === 'news'")
-      login(v-if="selected === 'login'")
-      user-statistics-page(v-if="selected === 'userStatistics'")
+v-ons-splitter
+  v-ons-splitter-side(swipeable v-bind:animation="animation" collapse width="200px" side="right" v-bind:open.sync="showMenu")
+    menu-page
+  v-ons-splitter-content
+    app-navigator(v-if="selected === 'modules'")
+    info(v-if="selected === 'news'")
+    login(v-if="selected === 'login'")
+    user-statistics-page(v-if="selected === 'userStatistics'")
+    //- admin-panel-main-page(v-if="selected === 'adminPanel'")
+    admin-panel-user-navigator(v-if="selected === 'userList'")
+    admin-panel-school-class-navigator(v-if="selected === 'schoolClassList'")
 </template>
 
 <script lang="coffee">
@@ -18,6 +20,9 @@ import AppNavigator from "./AppNavigator.vue"
 import Info from "./Info.vue"
 import Login from "./Login.vue"
 import UserStatisticsPage from "./UserStatisticsPage.vue"
+# import AdminPanelMainPage from "./AdminPanelMainPage.vue"
+import AdminPanelUserNavigator from "./AdminPanelUserNavigator.vue"
+import AdminPanelSchoolClassNavigator from "./AdminPanelSchoolClassNavigator.vue"
 return
   created : ->
     @$ons.disableAutoStatusBarFill()
@@ -28,7 +33,7 @@ return
       get : -> @$store.state.menu.showMenu
       set : (newValue) -> @$store.commit "menu/toggle", newValue
     selected : -> @$store.state.menu.selected
-  components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage}
+  components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage, AdminPanelUserNavigator, AdminPanelSchoolClassNavigator }
 </script>
 
 <style lang="sass">
