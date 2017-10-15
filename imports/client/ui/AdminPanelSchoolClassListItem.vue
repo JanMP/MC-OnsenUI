@@ -1,7 +1,7 @@
 <template lang="jade">
 v-ons-list-item(@click="editSchoolClass")
   .left
-    v-ons-icon(fixed-width icon="fa-users")
+    v-ons-icon.class-icon(fixed-width icon="fa-users")
   .center
     div
       span.school-class {{schoolClass.name}}<br>
@@ -37,6 +37,9 @@ return
 </script>
 
 <style scoped lang="sass">
+.class-icon
+  font-size : 1.5em
+  color : #444
 .school-class
   font-weight: bold
 .teacher-name
