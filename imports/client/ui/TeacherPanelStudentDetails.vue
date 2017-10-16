@@ -3,6 +3,7 @@ v-ons-page
   custom-toolbar(v-bind:title="title" v-bind:showBackButton="true")
   .content(ref="content")
     user-bar-plot(v-bind:submissions="submissions" v-bind:options="chartOptions")
+    p
     v-ons-list-header Einzelergebnisse
     v-ons-list
       v-ons-list-item(v-if="submissions.length === 0")
@@ -38,7 +39,11 @@ return
         Meteor.users.findOne _id : id
     submissions :
       params : -> userId : @student._id
-      update : ({userId}) -> (Submissions.find {userId}).fetch()
+      update : ({userId}) ->
+        Submissions.find {userId},
+          sort :
+            date : -1
+        .fetch()
   components : {SubmissionListItem, UserBarPlot}
 </script>
 

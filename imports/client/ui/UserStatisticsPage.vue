@@ -3,6 +3,7 @@ v-ons-page
   custom-toolbar(title="Meine Statistik")
   .content(ref="content")
     user-bar-plot(v-bind:submissions="submissions" v-bind:options="chartOptions")
+    p
     v-ons-list-header Einzelergebnisse
     v-ons-list
       v-ons-list-item(v-if="submissions.length === 0")
@@ -30,7 +31,11 @@ return
           width : "#{e.clientWidth-20}px"
           height : "#{e.clientHeight-20}px"
   meteor :
-    submissions : -> Submissions.find(userId : Meteor.userId()).fetch()
+    submissions : ->
+      Submissions.find userId : Meteor.userId(),
+        sort :
+          date : -1
+      .fetch()
   components : { UserBarPlot, SubmissionListItem }
 </script>
 
