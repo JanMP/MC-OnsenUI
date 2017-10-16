@@ -1,6 +1,6 @@
 <template lang="jade">
 v-ons-page
-  custom-toolbar(title="Meine Statistik")
+  custom-toolbar(v-bind:title="title" v-bind:showBackButton="true")
   .content(ref="content")
     user-bar-plot(v-bind:submissions="submissions" v-bind:options="chartOptions")
     v-ons-list-header Einzelergebnisse
@@ -11,12 +11,12 @@ v-ons-page
 </template>
 
 <script lang="coffee">
-import { Meteor } from "meteor/meteor"
 import { Submissions } from "/imports/api/submissions.coffee"
-import UserBarPlot from "/imports/client/ui/UserBarPlot.vue"
 import SubmissionListItem from "./SubmissionListItem.vue"
+import UserBarPlot from "./UserBarPlot.vue"
 return
   data : ->
+    student : {}
     chartOptions : {}
   mounted : ->
     window.addEventListener "resize", @setChartOptions
@@ -29,12 +29,20 @@ return
         @chartOptions =
           width : "#{e.clientWidth-20}px"
           height : "#{e.clientHeight-20}px"
+  computed :
+    title : -> @student.fullName()
   meteor :
-    submissions : -> Submissions.find(userId : Meteor.userId()).fetch()
-  components : { UserBarPlot, SubmissionListItem }
+    student :
+      params : -> id : @$store.state.teacherPanelNavigator.studentId
+      update : ({id}) ->
+        Meteor.users.findOne _id : id
+    submissions :
+      params : -> userId : @student._id
+      update : ({userId}) -> (Submissions.find {userId}).fetch()
+  components : {SubmissionListItem, UserBarPlot}
 </script>
 
 <style scoped lang="sass">
 .container
-  padding : 10px
+  padding: 10px
 </style>

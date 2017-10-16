@@ -7,6 +7,7 @@ v-ons-splitter
     info(v-if="selected === 'news'")
     login(v-if="selected === 'login'")
     user-statistics-page(v-if="selected === 'userStatistics'")
+    teacher-panel-navigator(v-if="selected === 'teacherPanel'")
     //- admin-panel-main-page(v-if="selected === 'adminPanel'")
     admin-panel-user-navigator(v-if="selected === 'userList'")
     admin-panel-school-class-navigator(v-if="selected === 'schoolClassList'")
@@ -20,6 +21,7 @@ import AppNavigator from "./AppNavigator.vue"
 import Info from "./Info.vue"
 import Login from "./Login.vue"
 import UserStatisticsPage from "./UserStatisticsPage.vue"
+import TeacherPanelNavigator from "./TeacherPanelNavigator.vue"
 # import AdminPanelMainPage from "./AdminPanelMainPage.vue"
 import AdminPanelUserNavigator from "./AdminPanelUserNavigator.vue"
 import AdminPanelSchoolClassNavigator from "./AdminPanelSchoolClassNavigator.vue"
@@ -33,7 +35,7 @@ return
       get : -> @$store.state.menu.showMenu
       set : (newValue) -> @$store.commit "menu/toggle", newValue
     selected : -> @$store.state.menu.selected
-  components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage, AdminPanelUserNavigator, AdminPanelSchoolClassNavigator }
+  components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage, AdminPanelUserNavigator, AdminPanelSchoolClassNavigator, TeacherPanelNavigator }
 </script>
 
 <style lang="sass">
