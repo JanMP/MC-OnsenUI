@@ -1,5 +1,5 @@
 <template lang="jade">
-.ct-chart.ct-perfect-fourth(ref="chart")
+.ct-chart(ref="chart")
 </template>
 
 <script lang="coffee">
@@ -54,8 +54,8 @@ return
       chart.on "draw", (context) ->
         if context.type is "bar"
           color = switch context.seriesIndex
-            when 0 then "#13CE66"
-            else "#FF4949"
+            when 0 then "green"
+            else "red"
           context.element.attr style : "stroke : #{color}"
   watch :
     chartData : -> @renderChart()

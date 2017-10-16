@@ -24,6 +24,12 @@
       .left
         v-ons-icon.list-item__icon(fixed-width icon="fa-comments-o")
       .center Chat
+  v-ons-list-title(v-if="isTeacher") Lehrer
+  v-ons-list(v-if="isTeacher")
+    v-ons-list-item(@click="select('teacherPanel')")
+      .left
+        v-ons-icon.list-item__icon(fixed-width icon="fa-graduation-cap")
+      .center Meine Klassen
   v-ons-list-title(v-if="isAdmin") Verwalten
   v-ons-list(v-if="isAdmin")
     v-ons-list-item(@click="select('userList')")

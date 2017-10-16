@@ -13,6 +13,8 @@ export default store =
         options : {}
         moduleKey : ""
       mutations :
+        init : (state, page) ->
+          if state.stack.length is 0 then state.stack.push page
         push : (state, page) -> state.stack.push page
         selectModule : (state, moduleKey) -> state.moduleKey = moduleKey
         unselectModule : (state) -> state.moduleKey = ""
@@ -26,6 +28,8 @@ export default store =
         options : {}
         userId : ""
       mutations :
+        init : (state, page) ->
+          if state.stack.length is 0 then state.stack.push page
         push : (state, page) -> state.stack.push page
         selectUser : (state, userId) -> state.userId = userId
         unselectUser : (state) -> state.userId = ""
@@ -39,9 +43,29 @@ export default store =
         options : {}
         schoolClassId : ""
       mutations :
+        init : (state, page) ->
+          if state.stack.length is 0 then state.stack.push page
         push : (state, page) -> state.stack.push page
         selectSchoolClass : (state, id) -> state.schoolClassId = id
         unselectSchoolClass : (state) -> state.schoolClassId = ""
+        pop : (state) -> state.stack.pop() if state.stack.length > 1
+        options : (state, newOptions = {}) -> state.options = newOptions
+    teacherPanelNavigator :
+      strict : strict
+      namespaced : true
+      state :
+        stack : []
+        options : {}
+        schoolClassId : ""
+        studentId : ""
+      mutations :
+        init : (state, page) ->
+          if state.stack.length is 0 then state.stack.push page
+        push : (state, page) -> state.stack.push page
+        selectSchoolClass : (state, id) -> state.schoolClassId = id
+        unselectSchoolClass : (state) -> state.schoolClassId = ""
+        selectStudent : (state, id) -> state.studentId = id
+        unselectStudent : (state) -> state.studentId = ""
         pop : (state) -> state.stack.pop() if state.stack.length > 1
         options : (state, newOptions = {}) -> state.options = newOptions
     menu :

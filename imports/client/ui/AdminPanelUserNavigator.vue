@@ -3,7 +3,7 @@ v-ons-navigator(swipeable
   v-bind:page-stack="pageStack"
   v-bind:pop-page="storePop"
   v-bind:options="options"
-  )
+)
 </template>
 
 <script lang="coffee">
