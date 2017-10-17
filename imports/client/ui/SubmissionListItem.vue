@@ -5,8 +5,7 @@ v-ons-list-item
       p.date {{timeAgo}}:
       display-problem.problem(v-bind:problem="problem")
       .flex
-        .result
-          {{submission.answer}}
+        .result {{submission.answer}}
         .green.icon(v-if="submission.answerCorrect")
           v-ons-icon(icon="fa-check")
         .red.icon(v-else)
