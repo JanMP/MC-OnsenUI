@@ -7,7 +7,7 @@ v-ons-page
       template(v-if="answered")
         display-result(v-bind:data="resultDisplayData")
   v-ons-bottom-toolbar(v-if="answered" style="height : 44px")
-    v-ons-button(modifier="large quiet" @click="getNewProblem") Neue Aufgabe
+    v-ons-button(modifier="large quiet" @click="getNewProblem") {{$t('neueAufgabe')}}
   v-ons-bottom-toolbar(v-else v-bind:style="'height : '+inputHeight")
     math-mobile-input(v-bind:math="answer" v-bind:level="problem.level" v-bind:solution="problem.solution" @submit="answer => submit(answer)" @incLevel="incLevel" @decLevel="decLevel" @setHeight="height => setInputHeight(height)")
 </template>

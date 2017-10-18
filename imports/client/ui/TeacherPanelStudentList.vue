@@ -1,7 +1,7 @@
 <template lang="jade">
 v-ons-page
   custom-toolbar(v-bind:title="title" v-bind:showBackButton="true")
-  v-ons-list-title Schüler
+  v-ons-list-title {{$t('schüler')}}
   v-ons-list
     teacher-panel-student-list-item(v-for="student in students" v-bind:key="student._id" v-bind:student="student")
 </template>
@@ -15,7 +15,7 @@ return
     schoolClass : {}
   computed :
     schoolClassId : -> @$store.state.teacherPanelNavigator.schoolClassId
-    title : -> "Klasse #{@schoolClass?.name}"
+    title : -> @schoolClass?.name
   meteor :
     schoolClass :
       params : -> schoolClassId : @schoolClassId

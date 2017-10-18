@@ -30,9 +30,9 @@ return
         "#{@teacher.profile.firstName} #{@teacher.profile.lastName}"
       else
         if @teacher?
-          "Lehrer hat keinen Namen angegeben"
+          @$t "keinLehrerName"
         else
-          "Keine valide Angabe für Lehrer"
+          @$t "keinLehrerEintrag"
   components : {AdminSchoolClassSettingsPage}
 </script>
 

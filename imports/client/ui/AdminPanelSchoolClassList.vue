@@ -1,10 +1,10 @@
 <template lang="jade">
 v-ons-page
-  custom-toolbar(title="Klassen")
+  custom-toolbar(v-bind:title="$t('klassen')")
   v-ons-fab.plus-button(@click="newSchoolClass" position="bottom right" v-bind:visible="true")
     v-ons-icon(icon="fa-plus")
     //- span(style="margin-left : 10px")
-  v-ons-list-title Klassen
+  v-ons-list-title {{$t('klassen')}}
   v-ons-list
     admin-panel-school-class-list-item(v-for="schoolClass in schoolClasses" v-bind:schoolClass="schoolClass" v-bind:key="schoolClass._id")
 </template>

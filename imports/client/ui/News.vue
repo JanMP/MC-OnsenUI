@@ -1,7 +1,9 @@
 <template lang="jade">
 .text-container
+  p {{$t('test')}}
   markdown.
     ### MatheCoach mit neuer Benutzeroberfläche
+
     Ich bin dabei, die Benutzeroberfläche für MatheCoach komplett neu zu schreiben. Das hat vor allem technische Gründe.
 
     * Die neue Version nutzt ein anderes JavaScript Framework für den Aufbau der Seiteninhalte.

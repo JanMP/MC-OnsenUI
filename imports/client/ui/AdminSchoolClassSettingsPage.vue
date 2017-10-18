@@ -1,12 +1,12 @@
 <template lang="jade">
 v-ons-page
   custom-toolbar(v-bind:title="title" v-bind:showBackButton="true")
-  v-ons-list-header Name der Klasse
+  v-ons-list-header {{$t('nameDerKlasse')}}
   v-ons-list
     v-ons-list-item
       .center
         v-ons-input(v-model="formData.name" type="text" placeholder="Name der Klasse" input_id="name")
-  v-ons-list-header Lehrer
+  v-ons-list-header {{$t('lehrer')}}
   v-ons-list
     v-ons-list-item(v-for="(teacher, $index) in teachers" v-bind:key="teacher._id")
       .left
@@ -17,8 +17,8 @@ v-ons-page
         )
       label.center(v-bind:for="'radio-' + $index") {{teacher.name}}
   p
-    v-ons-button(modifier="large" @click="submitSchoolClassData" v-bind:disabled="!dataChanged") Speichern
-    v-ons-button.danger(modifier="large" @click="deleteSchoolClass") Klasse Löschen
+    v-ons-button(modifier="large" @click="submitSchoolClassData" v-bind:disabled="!dataChanged") {{$t('speichern')}}
+    v-ons-button.danger(modifier="large" @click="deleteSchoolClass") {{$t('klasseLöschen')}}
 </template>
 
 <script lang="coffee">
@@ -60,7 +60,7 @@ return
       saveSchoolClass.call @formData
       @closePage()
     deleteSchoolClass : ->
-      @$ons.notification.confirm "Die Klasse wirklich Löschen?"
+      @$ons.notification.confirm @$t "klasseLöschenNachfragen"
       .then =>
         deleteSchoolClass.call id : @schoolClass?._id
         @closePage()
@@ -72,7 +72,7 @@ return
       unless @newSchoolClass
         @schoolClass?.name
       else
-        "Neue Schulklasse"
+        @$t "neueKlasse"
     dataChanged : ->
       @formData.name isnt @schoolClass?.name or
       @formData.teacherId isnt @schoolClass?.teacherId

@@ -1,8 +1,8 @@
 <template lang="jade">
 .text-container
-  h4 Aufgabe:
+  h4 {{$t('aufgabe')}}:
   display-problem(v-bind:problem="submission")
-  h4 Antwort:
+  h4 {{$t('antwort')}}:
   p.centered {{submission.answer}}
     span.icon-span(v-if="submission.answerCorrect")
       icon.icon.pass(name="check")
@@ -17,9 +17,9 @@ return
   computed :
     result : ->
       if @submission.answerCorrect
-        "Korrekt"
+        @$t 'korrekt'
       else
-        "Nicht Korrekt"
+        @$t 'nichtKorrekt'
   props : ["submission"]
   components : { DisplayProblem }
 </script>

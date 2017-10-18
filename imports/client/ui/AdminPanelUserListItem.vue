@@ -6,8 +6,8 @@ v-ons-list-item(@click="selectUser")
     div
       span.fullName(v-if="user.profile && user.profile.firstName && user.profile.lastName") {{user.profile.firstName}} {{user.profile.lastName}}
       span.username ({{user.username}})<br>
-      span(v-if="user.lastActive") zuletzt aktiv : {{timeAgo}}<br>
-      span.klasse(v-if="showSchoolClass") Klasse: {{schoolClassName}}
+      span(v-if="user.lastActive") {{$t('zuletztAktiv')}}: {{timeAgo}}<br>
+      span.klasse(v-if="showSchoolClass") {{$t('klasse')}}: {{schoolClassName}}
 </template>
 
 <script lang="coffee">

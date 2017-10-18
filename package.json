@@ -26,7 +26,8 @@
     "vue-meteor-tracker": "^1.0.3",
     "vue-onsenui": "^2.2.1",
     "vue-router": "^2.8.1",
-    "vuex": "^2.5.0"
+    "vuex": "^2.5.0",
+    "vuex-i18n": "^1.7.0"
   },
   "devDependencies": {}
 }

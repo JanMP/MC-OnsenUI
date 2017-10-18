@@ -1,6 +1,6 @@
 <template lang="jade">
 v-ons-page
-  custom-toolbar(title="Meine Klassen")
+  custom-toolbar(v-bind:title="$t('meineKlassen')")
   v-ons-list-title Klassen
   v-ons-list
     teacher-panel-school-class-list-item(v-for="schoolClass in schoolClasses" v-bind:schoolClass="schoolClass" v-bind:key="schoolClass._id")

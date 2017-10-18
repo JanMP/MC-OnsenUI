@@ -1,8 +1,8 @@
 <template lang="jade">
 user-settings(v-if="userId" v-bind:userId="userId")
 v-ons-page(v-else)
-  custom-toolbar(title="Fehler")
-  h3 Nicht als Benutzer eingetragen
+  custom-toolbar(v-bind:title="$t('fehler')")
+  h3 {{$t('nichtAngemeldet')}}
 </template>
 
 <script lang="coffee">

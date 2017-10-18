@@ -4,10 +4,10 @@ v-ons-page
   .content(ref="content")
     user-bar-plot(v-bind:submissions="submissions" v-bind:options="chartOptions")
     p
-    v-ons-list-header Einzelergebnisse
+    v-ons-list-header {{$t('einzelergebnisse')}}
     v-ons-list
       v-ons-list-item(v-if="submissions.length === 0")
-        .center Es liegen keine Ergebnisse vor
+        .center {{$t('keineErgebnisse')}}
       submission-list-item(v-for="submission in submissions" v-bind:key="submission._id" v-bind:submission="submission")
 </template>
 

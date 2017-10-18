@@ -5,7 +5,7 @@ v-ons-list-item(@click="selectSchoolClass")
   .center
     div
       span.class-name {{schoolClass.name}}<br>
-      span Schüler: {{students.length}}
+      span {{$t('anzahlSchüler')}}: {{students.length}}
 </template>
 
 <script lang="coffee">

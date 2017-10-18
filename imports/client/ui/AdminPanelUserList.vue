@@ -1,7 +1,7 @@
 <template lang="jade">
 v-ons-page
-  custom-toolbar(title="Benutzer Verwalten")
-  v-ons-list-title Benutzer
+  custom-toolbar(v-bind:title="$t('benutzerVerwalten')")
+  v-ons-list-title {{$t('benutzer')}}
   v-ons-list
     admin-panel-user-list-item(
       v-for="user in users"

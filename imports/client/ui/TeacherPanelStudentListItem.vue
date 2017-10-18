@@ -4,9 +4,9 @@ v-ons-list-item(@click="selectStudent")
     v-ons-icon.student-icon(fixed-width v-bind:style="{color : iconColor}" icon="fa-user")
   .center
     div
-      span.fullName(v-if="student.fullName()") {{student.fullName()}}
+      span.fullName(v-if="student.fullName()") {{student.fullName()}} 
       span.username ({{student.username}})<br>
-      span(v-if="student.lastActive") zuletzt aktiv : {{timeAgo}}<br>
+      span(v-if="student.lastActive") {{$t('zuletztAktiv')}}: {{timeAgo}}<br>
 </template>
 
 <script lang="coffee">

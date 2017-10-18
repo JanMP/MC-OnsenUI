@@ -19,7 +19,7 @@
         ons-col(width="33%")
           .master-button(modifier="large quiet" @click="incLevel") +
     ons-col(width="40%")
-      .master-button(modifier="large" @click="submit") Abgeben
+      .master-button(modifier="large" @click="submit") {{$t('abgeben')}}
 </template>
 
 <script lang="coffee">

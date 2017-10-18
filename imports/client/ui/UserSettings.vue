@@ -1,17 +1,17 @@
 <template lang="jade">
 div
-  v-ons-list-header Persönliche Daten
+  v-ons-list-header {{$t('persönlicheDaten')}}
   v-ons-list
     v-ons-list-item
       .center
-        v-ons-input(v-model="formData.firstName" type="text" placeholder="Vorname" input-id="firstNameId")
+        v-ons-input(v-model="formData.firstName" type="text" v-bind:placeholder="$t('vorname')" input-id="firstNameId")
     v-ons-list-item
       .center
-        v-ons-input(v-model="formData.lastName" type="text" placeholder="Nachname" input-id="lastNameId")
+        v-ons-input(v-model="formData.lastName" type="text" v-bind:placeholder="$t('nachname')" input-id="lastNameId")
   .container(v-if="isTeacher")
-    p Als Lehrer eingetragen. Lehrer haben keine Klasse.
+    p {{$t('alsLehrerEingetragen')}}
   div(v-else)
-    v-ons-list-header Klasse/Lerngruppe
+    v-ons-list-header {{$t('klasseLerngruppe')}}
     v-ons-list
       v-ons-list-item(v-for="(schoolClass, $index) in schoolClasses" v-bind:key="schoolClass._id")
         .left
@@ -22,7 +22,7 @@ div
           )
         label.center(v-bind:for="'radio-' + $index") {{schoolClass.name}}
   p
-    v-ons-button(modifier="large" @click="submitUserData" v-bind:disabled="!dataChanged") Speichern
+    v-ons-button(modifier="large" @click="submitUserData" v-bind:disabled="!dataChanged") {{$t('speichern')}}
 </template>
 
 <script lang="coffee">
@@ -48,7 +48,6 @@ return
     user :
       params : -> id : @userId
       update : ({id}) ->
-        console.log "user.update"
         Meteor.users.findOne(id)
   methods :
     setFormData : ->

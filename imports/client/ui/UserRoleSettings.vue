@@ -1,6 +1,6 @@
 <template lang="jade">
 div
-  v-ons-list-title Benutzer Rollen
+  v-ons-list-title {{$t('benutzerRollen')}}
   v-ons-list
     v-ons-list-item(v-for="(role, $index) in roles" v-bind:key="role.role")
       label.left
@@ -27,13 +27,13 @@ return
     roles : ->
       allRoles = [
         role : "admin"
-        description : "hat Administratorrechte"
+        description : @$t "hatAdminRechte"
       ,
         role : "mentor"
-        description : "ist Lehrer"
+        description : @$t "istLehrer"
       ,
         role : "mayNotEditOwnProfile"
-        description : "darf eigenes Profil NICHT selbst bearbeiten"
+        description : @$t "profilGesperrt"
       ]
       _.filter allRoles, (role) => @mayEdit(role.role)
   meteor :

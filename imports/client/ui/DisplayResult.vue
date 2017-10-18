@@ -1,12 +1,12 @@
 <template lang="jade">
 .result-container
-  h4 Deine Antwort:
+  h4 {{$t('deineAntwort')}}:
   katex(v-bind:tex="data.answerTeX")
-  h4 Musterlösung:
+  h4 {{$t('musterlösung')}}:
   katex(v-bind:tex="data.solutionTeX")
-  h4 Auswertung:
-  .result-header.pass(v-if="data.result.pass") Das Ergebnis ist korrekt:
-  .result-header.fail(v-else) Das Ergebnis ist nicht korrekt:
+  h4 {{$t('auswertung')}}:
+  .result-header.pass(v-if="data.result.pass") {{$t('ergebnisIstKorrekt')}}:
+  .result-header.fail(v-else) {{$t('ergebnisIstNichtKorrekt')}}:
   v-ons-list
     v-ons-list-item(v-for="text in data.result.passTextsRequired" key="text" modifier="nodivider")
       .center {{text}}

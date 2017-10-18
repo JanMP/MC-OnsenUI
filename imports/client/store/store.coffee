@@ -20,6 +20,13 @@ export default store =
         unselectModule : (state) -> state.moduleKey = ""
         pop : (state) -> state.stack.pop() if state.stack.length > 1
         options : (state, newOptions = {}) -> state.options = newOptions
+    locale :
+      strict : strict
+      namespaced : true
+      state :
+        language : "en"
+      mutations :
+        setLanguage : (state, language) -> state.language = language
     adminPanelUserNavigator :
       strict : strict
       namespaced : true
