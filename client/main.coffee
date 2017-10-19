@@ -32,8 +32,7 @@ Meteor.startup ->
   Vue.i18n.add "de", translationsDe
   Vue.i18n.add "en", translationsEn
 
-  testLanguage = "de"
-  language = testLanguage ? window.navigator.language.splice 0, 2
+  language = testLanguage ? window.navigator.language.slice 0, 2
 
   Vue.i18n.set language
 
