@@ -35,6 +35,8 @@ v-ons-page
     p
     v-ons-button(v-if="signingIn" modifier="large" @click="signIn") {{$t('anmelden')}}
     v-ons-button(v-else modifier="large" @click="signUp") {{$t('benutzerkontoEinrichten')}}
+  .container
+    v-ons-button(@click="switchLanguage") {{otherLanguageText}}
 </template>
 
 <script lang="coffee">
@@ -55,9 +57,17 @@ return
       .then null, (reason) => @$ons.notification.toast reason, timeout : 2000
     signOut : ->
       @$store.dispatch "logoutUser"
+    switchLanguage : ->
+      @$store.dispatch "locale/set", @otherLanguage
   computed :
     currentUser : -> @$store.state.auth.user
     title : -> if @currentUser then @$t "einstellungen" else @$t "anmelden"
+    otherLanguage : ->
+      if @$store.state.locale.language is "en" then "de" else "en"
+    otherLanguageText : ->
+      switch @otherLanguage
+        when "en" then "Zu Englisch wechseln"
+        when "de" then "switch to german"
   components : { UserSettingsPage }
 </script>
 

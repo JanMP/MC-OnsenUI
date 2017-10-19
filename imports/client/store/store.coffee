@@ -26,7 +26,15 @@ export default store =
       state :
         language : "en"
       mutations :
-        setLanguage : (state, language) -> state.language = language
+        setLanguage : (state, language) ->
+          Vue.i18n.set language
+          moment.locale language
+          state.language = language
+      actions :
+        set : ({commit}, newValue) ->
+          commit "unsolvedProblems/removeAll", null, root : true
+          commit "setLanguage", newValue
+
     adminPanelUserNavigator :
       strict : strict
       namespaced : true
@@ -101,3 +109,5 @@ export default store =
           moduleKey = newValue.moduleKey
           level = newValue.level
           delete state.problem[moduleKey][level]
+        removeAll : (state, newValue) ->
+          state.problem = {}

@@ -45,7 +45,8 @@ return
     getNewProblem : ->
       @answered = false
       #get a new Problem to make sure level is valid
-      newProblem = new Problem @moduleKey, @level
+      language = @$store.state.locale.language
+      newProblem = new Problem @moduleKey, @level, language
       @level = newProblem.level
       storedProblem = @$store.state.unsolvedProblems?.problem?[@moduleKey]?[@level]
       if storedProblem?

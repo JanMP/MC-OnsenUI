@@ -9,7 +9,7 @@ import { getModulesList } from '/imports/client/mathproblems/getModulesList.coff
 import ModuleListItem from './ModuleListItem.vue'
 return
   data : ->
-    moduleList : getModulesList()
+    moduleList : getModulesList(@$store.state.locale.language)
   components : { ModuleListItem }
 </script>
 
