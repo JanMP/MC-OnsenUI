@@ -1,7 +1,7 @@
 export translationsEn =
   test : "This is a test."
   deineAntwort : "Your Answer"
-  musterlösung : "Our Answer"
+  musterlösung : "The Solution"
   auswertung : "Evaluation"
   ergebnisIstKorrekt : "Your answer is correct"
   ergebnisIstNichtKorrekt : "Your answer is not correct"
