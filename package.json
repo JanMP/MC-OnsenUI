@@ -29,5 +29,7 @@
     "vuex": "^2.5.0",
     "vuex-i18n": "^1.7.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai-string": "^1.4.0"
+  }
 }
