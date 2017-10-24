@@ -11,6 +11,7 @@ v-ons-splitter
     //- admin-panel-main-page(v-if="selected === 'adminPanel'")
     admin-panel-user-navigator(v-if="selected === 'userList'")
     admin-panel-school-class-navigator(v-if="selected === 'schoolClassList'")
+    qr-scanner-page(v-if="selected === 'qrScannerPage'")
 </template>
 
 <script lang="coffee">
@@ -25,6 +26,7 @@ import TeacherPanelNavigator from "./TeacherPanelNavigator.vue"
 # import AdminPanelMainPage from "./AdminPanelMainPage.vue"
 import AdminPanelUserNavigator from "./AdminPanelUserNavigator.vue"
 import AdminPanelSchoolClassNavigator from "./AdminPanelSchoolClassNavigator.vue"
+import QrScannerPage from "./QrScannerPage.vue"
 return
   created : ->
     @$ons.disableAutoStatusBarFill()
@@ -35,7 +37,7 @@ return
       get : -> @$store.state.menu.showMenu
       set : (newValue) -> @$store.commit "menu/toggle", newValue
     selected : -> @$store.state.menu.selected
-  components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage, AdminPanelUserNavigator, AdminPanelSchoolClassNavigator, TeacherPanelNavigator }
+  components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage, AdminPanelUserNavigator, AdminPanelSchoolClassNavigator, TeacherPanelNavigator, QrScannerPage }
 </script>
 
 <style lang="sass">
