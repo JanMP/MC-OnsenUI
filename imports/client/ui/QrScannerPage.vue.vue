@@ -40,7 +40,11 @@ return
               "#{user.profile.firstName} #{user.profile.lastName}"
       else
         "fnord"
-      qr.imageSync code, type : "svg"
+      try
+        result = qr.imageSync code, type : "svg"
+      catch error
+        console.log "qr error:", error
+      result or "fnord"
 </script>
 
 <style scoped lang="sass">
