@@ -7,7 +7,7 @@ v-ons-page(modifier="full_bg")
 
 <script lang="coffee">
 import { Meteor } from "meteor/meteor"
-import qr from "qr-image"
+import QRCode from "qrcode-svg"
 return
   data : ->
     error : ""
@@ -40,11 +40,7 @@ return
               "#{user.profile.firstName} #{user.profile.lastName}"
       else
         "fnord"
-      try
-        result = qr.imageSync code, type : "svg"
-      catch error
-        console.log "qr error:", error
-      result or "fnord"
+      new QRCode(code).svg()
 </script>
 
 <style scoped lang="sass">
