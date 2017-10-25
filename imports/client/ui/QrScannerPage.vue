@@ -16,7 +16,7 @@ return
         alert "Cordova only"
         @$store.commit "menu/select", "teacherPanel"
       else
-        onSuccess = (codeString) ->
+        onSuccess = (codeString) =>
           codeObject = JSON.parse codeString
           unless codeObject?.id? and codeObject?.username?
             alert "Data Error"
@@ -25,7 +25,7 @@ return
               userId : codeObject.id
               schoolClassId : @schoolClassId
             @$store.commit "menu/select", "teacherPanel"
-        onError = (err) -> console.log err
+        onError = (err) => console.log err
         options =
           flash : "off"
           drawSight : false
