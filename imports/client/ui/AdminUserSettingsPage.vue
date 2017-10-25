@@ -2,13 +2,15 @@
 v-ons-page
   custom-toolbar(v-bind:title="title" v-bind:showBackButton="true")
   user-role-settings(v-bind:userId="userId")
-  user-settings(v-bind:userId="userId")
   p {{$t('adminUserSettingsHint')}}
+  user-personal-settings(v-bind:userId="userId")
+  admin-user-school-class-settings(v-bind:userId="userId")
 </template>
 
 <script lang="coffee">
-import UserSettings from "./UserSettings.vue"
+import UserPersonalSettings from "./UserPersonalSettings.vue"
 import UserRoleSettings from "./UserRoleSettings.vue"
+import AdminUserSchoolClassSettings from "./AdminUserSchoolClassSettings.vue"
 return
   computed :
     userId : -> @$store.state.adminPanelUserNavigator.userId
@@ -17,7 +19,7 @@ return
     user :
       params : -> id : @userId
       update : ({id}) -> Meteor.users.findOne(id)
-  components : {UserSettings, UserRoleSettings}
+  components : {UserPersonalSettings, UserRoleSettings, AdminUserSchoolClassSettings}
 </script>
 
 <style scoped lang="sass">

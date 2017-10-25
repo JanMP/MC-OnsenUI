@@ -4,6 +4,8 @@ v-ons-page
   v-ons-list-title {{$t('schüler')}}
   v-ons-list
     teacher-panel-student-list-item(v-for="student in students" v-bind:key="student._id" v-bind:student="student")
+  v-ons-fab.plus-button(position="bottom right" @click="selectQrScannerPage")
+    v-ons-icon(icon="fa-plus")
 </template>
 
 <script lang="coffee">
@@ -25,10 +27,15 @@ return
       params : ->
         schoolClassId : @schoolClassId
       update : ({schoolClassId}) -> (Meteor.users.find {schoolClassId}).fetch()
+  methods :
+    selectQrScannerPage : ->
+      @$store.commit "menu/select", "qrScannerPage"
   components : { TeacherPanelStudentListItem }
 </script>
 
 <style scoped lang="sass">
+.plus-button
+  background-color: grey
 .class-icon
   font-size : 1.4em
 </style>

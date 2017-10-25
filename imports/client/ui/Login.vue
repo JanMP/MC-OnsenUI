@@ -1,7 +1,6 @@
 <template lang="jade">
 v-ons-page
   custom-toolbar(v-bind:title="title")
-  p
   div(v-if="currentUser")
     UserSettingsPage(v-bind:userId="currentUser._id")
     .container

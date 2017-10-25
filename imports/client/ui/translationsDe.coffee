@@ -60,4 +60,6 @@ export translationsDe =
   neueKlasse : "Neue Schulklasse"
   benutzerVerwalten : "Benutzer Verwalten"
   klassenVerwalten : "Klassen Verwalten"
-  adminUserSettingsHint : "Änderungen der Benutzerrollen werden sofort wirksam. Änderungen der Persönlichen Daten müssen mit 'Speichern' bestätigt werden."
+  adminUserSettingsHint : "Änderungen der Benutzerrollen werden sofort wirksam. Änderungen der Persönlichen Daten under Klasse müssen mit 'Speichern' bestätigt werden."
+  beschreibungQrCode : "Bla, Bla, ausfürhrliche Beschreibung wie das Funktioniert, Bla"
+  umAufnameBitten : "Um Aufname in Klasse Bitten"

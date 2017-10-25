@@ -1,18 +1,21 @@
 <template lang="jade">
-user-settings(v-if="userId" v-bind:userId="userId")
+div(v-if="userId")
+  user-personal-settings(v-bind:userId="userId")
+  user-school-class-settings(v-bind:userId="userId")
 v-ons-page(v-else)
   custom-toolbar(v-bind:title="$t('fehler')")
   h3 {{$t('nichtAngemeldet')}}
 </template>
 
 <script lang="coffee">
-import UserSettings from "./UserSettings.vue"
+import UserPersonalSettings from "./UserPersonalSettings.vue"
+import UserSchoolClassSettings from "./UserSchoolClassSettings.vue"
 import { roles } from "./mixins/roles.coffee"
 return
   mixins : [roles]
   computed :
     userId : -> @currentUser._id
-  components : {UserSettings}
+  components : {UserPersonalSettings, UserSchoolClassSettings}
 </script>
 
 <style scoped lang="sass">

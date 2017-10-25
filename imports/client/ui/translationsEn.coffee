@@ -61,3 +61,5 @@ export translationsEn =
   benutzerVerwalten : "Admin: users"
   klassenVerwalten : "Admin: classes"
   adminUserSettingsHint : "Changes in User Roles become effective immediately. All other changes have to be saved to become effective."
+  beschreibungQrCode : "bla, bla, verbose description how this works, bla"
+  umAufnameBitten : "Request Admission into Class"
