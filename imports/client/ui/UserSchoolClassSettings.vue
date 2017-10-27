@@ -5,8 +5,14 @@ div
     v-ons-list-item
       .center {{$t('alsLehrerEingetragen')}}
   v-ons-list(v-else)
-    .center.container {{$t('beschreibungQrCode')}}
-  v-ons-button(modifier="large" @click="showQrCode") {{$t('umAufnameBitten')}}
+    v-ons-list-item
+      .left.label {{$t('klasse')}}:
+      .center
+        span(v-if="schoolClass") {{schoolClass.name}}
+        span(v-else) {{$t('keineKlasse')}}
+    v-ons-list-item
+      .center.container {{$t('beschreibungQrCode')}}
+    v-ons-button(modifier="large" @click="showQrCode") {{$t('umAufnameBitten')}}
 </template>
 
 <script lang="coffee">
