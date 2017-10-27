@@ -28,7 +28,6 @@ import TeacherPanelNavigator from "./TeacherPanelNavigator.vue"
 import AdminPanelUserNavigator from "./AdminPanelUserNavigator.vue"
 import AdminPanelSchoolClassNavigator from "./AdminPanelSchoolClassNavigator.vue"
 import QrCodePage from "./QrCodePage.vue"
-import QrScannerPage from "./QrScannerPage.vue"
 return
   created : ->
     @$ons.disableAutoStatusBarFill()
@@ -39,7 +38,7 @@ return
       get : -> @$store.state.menu.showMenu
       set : (newValue) -> @$store.commit "menu/toggle", newValue
     selected : -> @$store.state.menu.selected
-  components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage, AdminPanelUserNavigator, AdminPanelSchoolClassNavigator, TeacherPanelNavigator, QrCodePage, QrScannerPage }
+  components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage, AdminPanelUserNavigator, AdminPanelSchoolClassNavigator, TeacherPanelNavigator, QrCodePage }
 </script>
 
 <style lang="sass">

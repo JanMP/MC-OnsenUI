@@ -4,14 +4,16 @@ v-ons-page
   v-ons-list-title {{$t('schüler')}}
   v-ons-list
     teacher-panel-student-list-item(v-for="student in students" v-bind:key="student._id" v-bind:student="student")
-  v-ons-fab.plus-button(position="bottom right" @click="selectQrScannerPage")
+  v-ons-fab.plus-button(position="bottom right" @click="addStudent")
     v-ons-icon(icon="fa-plus")
 </template>
 
 <script lang="coffee">
 import TeacherPanelStudentListItem from "./TeacherPanelStudentListItem.vue"
 import { SchoolClasses } from "/imports/api/schoolClasses.coffee"
+import { addStudentToSchoolClass } from "./mixins/addStudentToSchoolClass.coffee"
 return
+  mixins : [addStudentToSchoolClass]
   data : ->
     students : []
     schoolClass : {}
@@ -28,8 +30,8 @@ return
         schoolClassId : @schoolClassId
       update : ({schoolClassId}) -> (Meteor.users.find {schoolClassId}).fetch()
   methods :
-    selectQrScannerPage : ->
-      @$store.commit "menu/select", "qrScannerPage"
+    addStudent : ->
+      @addStudentToSchoolClass @schoolClassId
   components : { TeacherPanelStudentListItem }
 </script>
 

@@ -10,10 +10,6 @@
       .left
         v-ons-icon.list-item__icon(fixed-width icon="fa-sign-in")
       .center {{$t('anmelden')}}
-    //- v-ons-list-item(@click="select('qrCodePage')")
-    //-   .left
-    //-     v-ons-icon.list-item__icon(fixed-width icon="fa-qrcode")
-    //-   .center QR Test
   v-ons-list-title {{$t('fürSchüler')}}
   v-ons-list
     v-ons-list-item(@click="select('modules')")
