@@ -61,6 +61,7 @@ export translationsEn =
   benutzerVerwalten : "Admin: users"
   klassenVerwalten : "Admin: classes"
   adminUserSettingsHint : "Changes in User Roles become effective immediately. All other changes have to be saved to become effective."
-  beschreibungQrCode : "To be admitted to a class just show the QR-Code (button below) to your teacher. He/she will scann that QR-Code with his mobile phone and you are all set up."
+  beschreibungQrCode : "To be admitted to a class just have the QR-Code (button below) scanned with your teacher's mobile phone and you are all set up."
   umAufnameBitten : "Request Admission into Class"
   keineKlasse : "not admitted to any class"
+  inhalt : "Modules"

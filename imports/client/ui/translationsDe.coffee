@@ -64,3 +64,4 @@ export translationsDe =
   beschreibungQrCode : "Um dich in eine Klasse eintragen zu lassen,  zeigtst Du deinem Lehrer den QR-Code (Taste unten). Er scannt den QR-Code mit seinem Handy und du wirst automatisch in die Klasse eingetragen."
   umAufnameBitten : "QR-Code anzeigen"
   keineKlasse : "nicht in Klasse eingetragen"
+  inhalt : "Lernmodule"
