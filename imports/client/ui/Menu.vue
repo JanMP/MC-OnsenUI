@@ -46,10 +46,14 @@
       .left
         v-ons-icon.list-item__icon(fixed-width icon="fa-info-circle")
       .center {{$t('news')}}
-    v-ons-list-item
+    v-ons-list-item(@click="select('functionPlotTestPage')")
       .left
-        v-ons-icon.list-item__icon(fixed-width icon="fa-question-circle")
-      .center {{$t('hilfe')}}
+        v-ons-icon.list-item__icon(fixed-width icon="fa-line-chart")
+      .center {{$t('funktionsgraph')}}
+    //- v-ons-list-item
+    //-   .left
+    //-     v-ons-icon.list-item__icon(fixed-width icon="fa-question-circle")
+    //-   .center {{$t('hilfe')}}
 </template>
 
 <script lang="coffee">

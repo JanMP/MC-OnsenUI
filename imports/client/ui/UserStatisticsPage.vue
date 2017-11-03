@@ -2,8 +2,8 @@
 v-ons-page
   custom-toolbar(v-bind:title="$t('meineErgebnisse')")
   .content(ref="content")
+    v-ons-list-header {{$t('zweiWochenÜbersicht')}}
     user-bar-plot(v-bind:submissions="submissions" v-bind:options="chartOptions")
-    p
     v-ons-list-header {{$t('einzelergebnisse')}}
     v-ons-list
       v-ons-list-item(v-if="submissions.length === 0")

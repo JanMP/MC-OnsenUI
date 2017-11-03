@@ -4,7 +4,7 @@ v-ons-toolbar
   .left
     v-ons-back-button(v-if="showBackButton")
   .right
-    v-ons-toolbar-button
+    v-ons-toolbar-button.collapsing
       v-ons-icon(icon="fa-bars" @click="toggleMenu")
 </template>
 
@@ -23,4 +23,7 @@ return
 </script>
 
 <style scoped lang="sass">
+.collapsing
+  @media screen and (min-width : 768px)
+    display: none
 </style>

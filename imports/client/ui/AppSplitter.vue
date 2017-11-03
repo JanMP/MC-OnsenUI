@@ -1,6 +1,6 @@
 <template lang="jade">
 v-ons-splitter
-  v-ons-splitter-side(swipeable v-bind:animation="animation" collapse width="200px" side="right" v-bind:open.sync="showMenu")
+  v-ons-splitter-side.side(swipeable v-bind:animation="animation" collapse="(max-width : 767px)" width="200px" side="right" v-bind:open.sync="showMenu")
     menu-page
   v-ons-splitter-content
     app-navigator(v-if="selected === 'modules'")
@@ -13,6 +13,7 @@ v-ons-splitter
     admin-panel-school-class-navigator(v-if="selected === 'schoolClassList'")
     qr-code-page(v-if="selected === 'qrCodePage'")
     qr-scanner-page(v-if="selected === 'qrScannerPage'")
+    function-plot-test-page(v-if="selected === 'functionPlotTestPage'")
 </template>
 
 <script lang="coffee">
@@ -28,6 +29,7 @@ import TeacherPanelNavigator from "./TeacherPanelNavigator.vue"
 import AdminPanelUserNavigator from "./AdminPanelUserNavigator.vue"
 import AdminPanelSchoolClassNavigator from "./AdminPanelSchoolClassNavigator.vue"
 import QrCodePage from "./QrCodePage.vue"
+import FunctionPlotTestPage from "./FunctionPlotTestPage.vue"
 return
   created : ->
     @$ons.disableAutoStatusBarFill()
@@ -38,10 +40,14 @@ return
       get : -> @$store.state.menu.showMenu
       set : (newValue) -> @$store.commit "menu/toggle", newValue
     selected : -> @$store.state.menu.selected
-  components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage, AdminPanelUserNavigator, AdminPanelSchoolClassNavigator, TeacherPanelNavigator, QrCodePage }
+  components : { MenuPage, AppNavigator, CustomToolbar, Info, Login, UserStatisticsPage, AdminPanelUserNavigator, AdminPanelSchoolClassNavigator, TeacherPanelNavigator, QrCodePage, FunctionPlotTestPage }
 </script>
 
 <style lang="sass">
+.side
+
+  @media screen and (min-width : 768px)
+    border-left: 1pt solid silver
 .text-container
   padding : 10px
 h1, h2, h3, h4, h5, h6

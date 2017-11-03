@@ -1,6 +1,6 @@
 <template lang="jade">
 v-ons-page
-  custom-toolbar(title="$t('inhalt')")
+  custom-toolbar(v-bind:title="$t('inhalt')")
   module-list-item(v-bind:item="moduleList[0]")
 </template>
 

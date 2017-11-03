@@ -31,12 +31,12 @@ email@1.2.3
 static-html
 session@1.1.7
 
-coffeescript
+coffeescript@2.0.2_1
 
 akryum:vue
 akryum:vue-component
 akryum:vue-jade
-akryum:vue-coffee
+akryum:vue-coffee@0.2.0
 akryum:vue-sass
 akryum:vue-router2
 dynamic-import@0.2.0
