@@ -2262,7 +2262,7 @@ h4, h5, h6 {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
 }
-.tabbar__badge.notification { /* FIXME */
+.tabbar__badge.notification { /* FIXME id:2 gh:11*/
   position: absolute;
   top: 5px;
   z-index: 10;
@@ -2848,7 +2848,7 @@ h4, h5, h6 {
   cursor: default;
   pointer-events: none;
 }
-:disabled:active + .checkbox__checkmark:before { /* FIXME */
+:disabled:active + .checkbox__checkmark:before { /* FIXME id:1 gh:10*/
   background: transparent;
 }
 /*~
@@ -4622,7 +4622,7 @@ h4, h5, h6 {
   border-radius: 0;
   height: 24px;
   vertical-align: middle;
-  -webkit-transform: translate3d(0, 0, 0); /* FIXME: prevent ios flicker */
+  -webkit-transform: translate3d(0, 0, 0); /* FIXME: prevent ios flicker  id:0 gh:9*/
 }
 .text-input--material__label {
   font-family: 'Roboto', 'Noto', sans-serif;
@@ -5620,11 +5620,11 @@ h4, h5, h6 {
   background-color: #80cbc4;
   z-index: 0;
 }
-.progress-bar--material.progress-bar--indeterminate:before { /* FIXME */
+.progress-bar--material.progress-bar--indeterminate:before { /* FIXME id:4 gh:13*/
   background-color: #009688;
   border-radius: 0;
 }
-.progress-bar--material.progress-bar--indeterminate:after { /* FIXME */
+.progress-bar--material.progress-bar--indeterminate:after { /* FIXME id:5 gh:14*/
   background-color: #009688;
   border-radius: 0;
 }
