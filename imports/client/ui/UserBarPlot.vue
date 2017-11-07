@@ -1,20 +1,21 @@
 <template lang="jade">
 .silver
-  svg(width="100%" height="100%" v-bind:viewBox="chartData.viewbox" preserveAspectRatio="none")
-    //- rect(x="0" y="0" v-bind:width="chartData.width" v-bind:height="chartData.height")
-    g(v-for="entry in chartData.barData")
-      line(
-        v-bind:x1="entry.x"
-        v-bind:y1="entry.greenY1"
-        v-bind:x2="entry.x"
-        v-bind:y2="entry.greenY2"
-        style="stroke:green; stroke-width:9")
-      line(
-        v-bind:x1="entry.x"
-        v-bind:y1="entry.greenY2"
-        v-bind:x2="entry.x"
-        v-bind:y2="entry.redY2"
-        style="stroke:red; stroke-width:9")
+  svg(width="100%" height="100%" v-bind:viewBox="chartData.viewBox" preserveAspectRatio="none")
+    g(v-bind:transform="chartData.coordinateTransform")
+      g(v-for="bar in chartData.bars")
+        line.moving(
+          v-bind:x1="bar.x"
+          y1=0
+          v-bind:x2="bar.x"
+          v-bind:y2="bar.y1Red"
+          style="stroke:green; stroke-width:9")
+        line.moving(
+          v-bind:x1="bar.x"
+          v-bind:y1="bar.y1Red"
+          v-bind:x2="bar.x"
+          v-bind:y2="bar.y2Red"
+          style="stroke:red; stroke-width:9")
+      //- text(x=0 y=0 font-family="mono" font-size=10 fill="black" transform="scale(0 -1) translate(10 -10)") Test
 </template>
 
 <script lang="coffee">
@@ -23,10 +24,10 @@ import Chartist from "chartist"
 import _ from "lodash"
 return
   data : ->
-    mockDayData : [15..0].map (daysAgo) ->
-      correctCount : daysAgo
-      falseCount : 30-2*daysAgo
-      totalCount : 30-daysAgo
+    daysCharted : 14
+    dayWidth : 10
+    dayGap : 1
+    answerHeight : 10
 
   computed :
     chartData : ->
@@ -37,7 +38,7 @@ return
           .startOf "day"
           .format labelFormat
         answerCorrect : submission.answerCorrect
-      dayData = [15..0].map (daysAgo) ->
+      dayData = [@daysCharted-1..0].map (daysAgo) ->
         date =
           moment()
           .subtract daysAgo, "days"
@@ -54,24 +55,25 @@ return
         return {date, daysAgo, correctCount, falseCount, totalCount}
       #dayData = @mockDayData
       maxDayTotal = (_.maxBy dayData, "totalCount").totalCount
-      viewbox = "0 0 160 #{maxDayTotal * 10}"
-      width = 160
-      height = maxDayTotal * 10 + 10
-      barData = dayData.map (day, index) ->
-        x = 5 + index * 10
-        greenY1 = maxDayTotal * 10
-        greenY2 = greenY1 - day.correctCount * 10
-        redY2 = greenY2 - day.falseCount * 10
-        {x, greenY1, greenY2, redY2}
-      {barData, viewbox, width, height}
+      viewBox = "0 0 #{@daysCharted * (@dayWidth)} #{maxDayTotal * 10}"
+      coordinateTransform = "translate(0 #{maxDayTotal * 10}) scale(1 -1)"
+      bars = dayData.map (day, index) =>
+        x : @dayWidth * (index + .5)
+        y1Red : @answerHeight * day.correctCount
+        y2Red : @answerHeight * (day.correctCount + day.falseCount)
+      return {viewBox, coordinateTransform, bars}
+
+
   props : ["submissions", "options"]
 </script>
 
 <style scoped lang="sass">
+.moving
+  transition : all 1s
 .silver
   box-sizing : border-box
-  background-color: #333
-  padding : 5px
+  background-color: none
+  padding : 15px 20px 10px 20px
   width: 100%
   height : 200px
 </style>
