@@ -55,7 +55,7 @@ return
       symbols = arr.concat _.sortBy _.uniq /([a-z])/ig[Symbol.match] solutionStr
       if 0 < (numSymbols = symbols.length)
         @$emit "setHeight", "307px"
-        symbols.map (e)->
+        symbols.map (e) ->
           symbol : e
           class : "special"
           width : "#{100/numSymbols}%"

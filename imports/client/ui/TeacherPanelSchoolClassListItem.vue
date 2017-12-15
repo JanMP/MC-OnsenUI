@@ -22,6 +22,8 @@ return
       @$store.commit "teacherPanelNavigator/selectSchoolClass", @schoolClass._id
       @$store.commit "teacherPanelNavigator/push", TeacherPanelStudentList
   meteor :
+    $subscribe :
+      schoolClassUsers : -> [schoolClassId : @schoolClass._id]
     students :
       params : -> schoolClassId : @schoolClass._id
       update : ({schoolClassId}) -> (Meteor.users.find {schoolClassId}).fetch()

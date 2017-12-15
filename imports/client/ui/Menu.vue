@@ -20,10 +20,10 @@
       .left
         v-ons-icon.list-item__icon(fixed-width icon="fa-bar-chart")
       .center {{$t('meineErgebnisse')}}
-    v-ons-list-item
-      .left
-        v-ons-icon.list-item__icon(fixed-width icon="fa-comments-o")
-      .center {{$t('chat')}}
+    //- v-ons-list-item
+    //-   .left
+    //-     v-ons-icon.list-item__icon(fixed-width icon="fa-comments-o")
+    //-   .center {{$t('chat')}}
   v-ons-list-title(v-if="isTeacher") {{$t('fürLehrer')}}
   v-ons-list(v-if="isTeacher")
     v-ons-list-item(@click="select('teacherPanel')")
@@ -46,10 +46,10 @@
       .left
         v-ons-icon.list-item__icon(fixed-width icon="fa-info-circle")
       .center {{$t('news')}}
-    v-ons-list-item(@click="select('functionPlotTestPage')")
-      .left
-        v-ons-icon.list-item__icon(fixed-width icon="fa-line-chart")
-      .center {{$t('funktionsgraph')}}
+    //- v-ons-list-item(@click="select('functionPlotTestPage')")
+    //-   .left
+    //-     v-ons-icon.list-item__icon(fixed-width icon="fa-line-chart")
+    //-   .center {{$t('funktionsgraph')}}
     //- v-ons-list-item
     //-   .left
     //-     v-ons-icon.list-item__icon(fixed-width icon="fa-question-circle")

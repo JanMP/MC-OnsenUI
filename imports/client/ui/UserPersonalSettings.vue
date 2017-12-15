@@ -13,7 +13,6 @@ div
 
 <script lang="coffee">
 import { setUserSchoolClass, updateUserProfile } from "/imports/api/users.coffee"
-import { SchoolClasses, saveSchoolClass } from "/imports/api/schoolClasses.coffee"
 return
   props :
     userId : String

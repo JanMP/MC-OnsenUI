@@ -16,6 +16,8 @@ return
   data : ->
     users : []
   meteor :
+    $subscribe :
+      allUserData : []
     users : ->
       Meteor.users.find {},
         sort :

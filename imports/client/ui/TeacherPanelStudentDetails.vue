@@ -1,8 +1,8 @@
 <template lang="jade">
 v-ons-page
-  custom-toolbar(v-bind:title="title" v-bind:showBackButton="true")
+  custom-toolbar(v-bind:title="title" v-bind:showBackButton="true" v-bind:gravatar="student")
   .content(ref="content")
-    user-bar-plot(v-bind:submissions="submissions" v-bind:options="chartOptions")
+    user-bar-plot(v-bind:user="student")
     p
     v-ons-list-header {{$t('einzelergebnisse')}}
     v-ons-list
@@ -14,7 +14,7 @@ v-ons-page
 <script lang="coffee">
 import { Submissions } from "/imports/api/submissions.coffee"
 import SubmissionListItem from "./SubmissionListItem.vue"
-import UserBarPlot from "./UserBarPlot.vue"
+import UserBarPlot from "./UserBarPlot/UserBarPlot.vue"
 return
   data : ->
     student : {}
@@ -31,14 +31,20 @@ return
           width : "#{e.clientWidth-20}px"
           height : "#{e.clientHeight-20}px"
   computed :
-    title : -> @student.fullName()
+    title : -> @student?.fullName()
+    studentId : -> @$store.state.teacherPanelNavigator.studentId
   meteor :
+    $subscribe :
+      userData : -> [id : @studentId]
+      userSubmissions : -> [
+        userId : @studentId
+      ]
     student :
-      params : -> id : @$store.state.teacherPanelNavigator.studentId
+      params : -> id : @studentId
       update : ({id}) ->
         Meteor.users.findOne _id : id
     submissions :
-      params : -> userId : @student._id
+      params : -> userId : @studentId
       update : ({userId}) ->
         Submissions.find {userId},
           sort :

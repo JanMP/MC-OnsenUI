@@ -67,3 +67,11 @@ export translationsDe =
   inhalt : "Lernmodule"
   zweiWochenÜbersicht : "14 Tage Übersicht:"
   funktionsgraph : "Funktionsgraph"
+  # UserBarPlot
+  heute : "[heute]"
+  morgen : "[morgen]"
+  gestern : "[gestern]"
+  D_M : "D.M."
+  bronze : "Bronze"
+  silver : "Silber"
+  gold : "Gold"

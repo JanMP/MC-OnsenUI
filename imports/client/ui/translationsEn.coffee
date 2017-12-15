@@ -67,3 +67,11 @@ export translationsEn =
   inhalt : "Modules"
   zweiWochenÜbersicht : "The last 2 weeks:"
   funktionsgraph : "Function Plot"
+  # UserBarPlot
+  heute : "[today]"
+  morgen : "[tomorrow]"
+  gestern : "[yesterday]"
+  D_M : "D.M."
+  bronze : "Bronze"
+  silver : "Silver"
+  gold : "Gold"

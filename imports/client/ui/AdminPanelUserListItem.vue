@@ -24,7 +24,7 @@ return
       @$store.commit "adminPanelUserNavigator/selectUser", @user._id
       @$store.commit "adminPanelUserNavigator/push", AdminUserSettingsPage
   computed :
-    timeAgo : -> moment(@user.lastActive).fromNow()
+    timeAgo : -> if @user.lastActive then moment(@user.lastActive).fromNow()
     icon : ->
       if "mentor" in (@user.roles ? [])
         className : "teacherIcon"

@@ -1,16 +1,18 @@
 <template lang="jade">
 v-ons-list-item(@click="selectStudent")
   .left
-    v-ons-icon.student-icon(fixed-width v-bind:style="{color : iconColor}" icon="fa-user")
+    //- v-ons-icon.student-icon(fixed-width v-bind:style="{color : iconColor}" icon="fa-user")
+    info-avatar(v-bind:user="student")
   .center
     div
-      span.fullName(v-if="student.fullName()") {{student.fullName()}} 
+      span.fullName(v-if="student.fullName()") {{student.fullName()}}
       span.username ({{student.username}})<br>
       span(v-if="student.lastActive") {{$t('zuletztAktiv')}}: {{timeAgo}}<br>
 </template>
 
 <script lang="coffee">
 import TeacherPanelStudentDetails from "./TeacherPanelStudentDetails.vue"
+import InfoAvatar from "./InfoAvatar.vue"
 import {SchoolClasses} from "/imports/api/schoolClasses.coffee"
 return
   props :
@@ -38,6 +40,7 @@ return
       params : ->
         id : @student.schoolClassId
       update : ({id}) -> (SchoolClasses.findOne _id : id)?.name
+  components : { InfoAvatar }
 </script>
 
 <style scoped lang="sass">

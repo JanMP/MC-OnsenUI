@@ -6,9 +6,9 @@ v-ons-list-item
       display-problem.problem(v-bind:problem="problem")
       .flex
         .result {{submission.answer}}
-        .green.icon(v-if="submission.answerCorrect")
+        .pass.text.icon(v-if="submission.answerCorrect")
           v-ons-icon(icon="fa-check")
-        .red.icon(v-else)
+        .fail.text.icon(v-else)
           v-ons-icon(icon="fa-times")
 
 
@@ -25,7 +25,7 @@ return
       type : Object
       required : true
   computed :
-    timeAgo : ->moment(@submission.date).fromNow()
+    timeAgo : -> moment(@submission.date).fromNow()
     problem : ->
       Object.assign {}, @submission,
         title : getModuleTitle @submission.moduleKey
@@ -56,8 +56,4 @@ return
   font-size: 1.4em
   width : 2em
   text-align: center
-.green
-  color : green
-.red
-  color : red
 </style>

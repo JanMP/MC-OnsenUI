@@ -62,8 +62,6 @@ return
         y1Red : @answerHeight * day.correctCount
         y2Red : @answerHeight * (day.correctCount + day.falseCount)
       return {viewBox, coordinateTransform, bars}
-
-
   props : ["submissions", "options"]
 </script>
 

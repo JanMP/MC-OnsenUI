@@ -67,7 +67,7 @@ return
       @checkAnswer()
       if Meteor.userId()
         obj = _.pick @problem, [
-          "moduleKey", "level", "score", "description", "skipExpression", "geometryDrawData", "functionPlotData", "problemTeX"
+          "moduleKey", "level", "score", "description", "skipExpression", "geometryDrawData", "functionPlotData", "problemTeX", "title"
         ]
         submissionData = Object.assign obj,
           answerCorrect : @result.pass

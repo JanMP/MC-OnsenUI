@@ -7,3 +7,9 @@
 [submodule "imports/modules/nerdamer"]
 	path = imports/modules/nerdamer
 	url = https://github.com/jiggzson/nerdamer
+[submodule "imports/client/ui/VueFunctionPlot"]
+	path = imports/client/ui/VueFunctionPlot
+	url = https://github.com/JanMP/VueFunctionPlot
+[submodule "imports/client/ui/UserBarPlot"]
+	path = imports/client/ui/UserBarPlot
+	url = https://github.com/JanMP/UserBarPlot

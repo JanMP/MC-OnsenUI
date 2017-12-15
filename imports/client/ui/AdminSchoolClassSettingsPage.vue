@@ -45,7 +45,7 @@ return
           teacherId : ""
     teachers : ->
       Roles.getUsersInRole "mentor"
-        .fetch().map (e)->
+        .fetch().map (e) ->
           id : e._id
           name :
             if e?.profile?.lastName? and e?.profile?.firstName?
