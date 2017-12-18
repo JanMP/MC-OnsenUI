@@ -1,5 +1,5 @@
 <template lang="jade">
-v-ons-page
+v-ons-page(v-bind:infinite-scroll="loadMore")
   custom-toolbar(v-bind:title="title" v-bind:showBackButton="true" v-bind:gravatar="student")
   .content(ref="content")
     user-bar-plot(v-bind:user="student")
@@ -9,6 +9,8 @@ v-ons-page
       v-ons-list-item(v-if="submissions.length === 0")
         .center {{$t('keineErgebnisse')}}
       submission-list-item(v-for="submission in submissions" v-bind:key="submission._id" v-bind:submission="submission")
+      v-ons-list-item(v-if="!$subReady.userSubmissions")
+        .center Loading...
 </template>
 
 <script lang="coffee">
@@ -19,17 +21,16 @@ return
   data : ->
     student : {}
     chartOptions : {}
+    page : 1
   mounted : ->
     window.addEventListener "resize", @setChartOptions
     @$nextTick @setChartOptions
   beforeDestroy : ->
     window.removeEventListener "resize", @setChartOptions
   methods :
-    setChartOptions : ->
-      if e = @$refs.content
-        @chartOptions =
-          width : "#{e.clientWidth-20}px"
-          height : "#{e.clientHeight-20}px"
+    loadMore : (done) ->
+      if @page * 10 <= @submissions.length then @page += 1
+      Vue.nextTick done
   computed :
     title : -> @student?.fullName()
     studentId : -> @$store.state.teacherPanelNavigator.studentId
@@ -38,6 +39,7 @@ return
       userData : -> [id : @studentId]
       userSubmissions : -> [
         userId : @studentId
+        page : @page
       ]
     student :
       params : -> id : @studentId

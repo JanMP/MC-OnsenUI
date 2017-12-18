@@ -1,5 +1,5 @@
 <template lang="jade">
-v-ons-page
+v-ons-page(v-bind:infinite-scroll="loadMore")
   custom-toolbar(v-bind:title="$t('meineErgebnisse')")
   .content(ref="content")
     v-ons-list-header {{$t('zweiWochenÜbersicht')}}
@@ -20,6 +20,10 @@ import SubmissionListItem from "./SubmissionListItem.vue"
 return
   data : ->
     page : 1
+  methods :
+    loadMore : (done) ->
+      if @page * 10 <= @submissions.length then @page += 1
+      Vue.nextTick done
   meteor :
     $subscribe :
       userSubmissions : -> [
