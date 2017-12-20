@@ -3,8 +3,7 @@ v-ons-page(v-bind:infinite-scroll="loadMore")
   custom-toolbar(v-bind:title="$t('meineErgebnisse')")
   .content(ref="content")
     v-ons-list-header {{$t('zweiWochenÜbersicht')}}
-    .bar-plot.container
-      user-bar-plot(v-bind:user="user")
+    user-bar-plot(v-bind:user="user")
     v-ons-list-header {{$t('einzelergebnisse')}}
     v-ons-list
       v-ons-list-item(v-if="submissions.length === 0")
@@ -40,9 +39,4 @@ return
 </script>
 
 <style scoped lang="sass">
-.container
-  padding : 10px
-.bar-plot-container
-  width : 200px
-  height : 200px
 </style>
