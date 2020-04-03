@@ -4,3 +4,6 @@
 [submodule "imports/modules/nerdamer"]
 	path = imports/modules/nerdamer
 	url = https://github.com/jiggzson/nerdamer
+[submodule "imports/mathProblems"]
+	path = imports/mathProblems
+	url = https://JanMP@github.com/JanMP/mathproblems.git
