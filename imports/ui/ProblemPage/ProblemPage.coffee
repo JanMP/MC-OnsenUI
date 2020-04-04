@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Button, Page} from 'react-onsenui'
 import {Problem} from "/imports/mathProblems/mathProblems"
 import {teXifyAM} from "/imports/mathProblems/renderAM"
+import DisplayProblem from "./DisplayProblem"
 # import { insertSubmission } from "/imports/api/submissions.coffee"
 import _ from "lodash"
 
@@ -24,7 +25,7 @@ export default ProblemPage = ->
 
   getNewProblem = ->
     # TODO implement unsolvedProblems storing and rettreival
-    setProblem newProblem = new Problem "quadraticFunctions", level, "de"
+    setProblem newProblem = new Problem "strahlensatz", level, "de"
     setLevel newProblem.level
     setAnswer ""
   
@@ -33,7 +34,11 @@ export default ProblemPage = ->
   style =
     padding: "1rem"
 
-  <Page style={style}>
-    <Button onClick={getNewProblem}>get new Problem</Button>
-    <pre>{JSON.stringify problem, null, 2}</pre>
+  <Page
+    contentStyle={padding: 8}
+  >
+    <div>
+      <Button onClick={getNewProblem}>get new Problem</Button>
+      <DisplayProblem problem={problem}/>
+    </div>
   </Page>
