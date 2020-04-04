@@ -5,7 +5,7 @@ v-ons-page
 </template>
 
 <script lang="coffee">
-import { getModulesList } from '/imports/client/mathproblems/getModulesList.coffee'
+import { getModulesList } from '/imports/mathProblems/getModulesList.coffee'
 import ModuleListItem from './ModuleListItem.vue'
 return
   data : ->

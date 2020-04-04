@@ -13,9 +13,9 @@ v-ons-page
 </template>
 
 <script lang="coffee">
-import { Problem } from "/imports/client/mathproblems/mathproblems.coffee"
+import { Problem } from "/imports/mathProblems/mathproblems.coffee"
 import { insertSubmission } from "/imports/api/submissions.coffee"
-import { teXifyAM } from "/imports/client/mathproblems/renderAM.coffee"
+import { teXifyAM } from "/imports/mathProblems/renderAM.coffee"
 import _ from "lodash"
 import DisplayProblem from "/imports/client/ui/DisplayProblem.vue"
 import DisplayResult from "./DisplayResult.vue"

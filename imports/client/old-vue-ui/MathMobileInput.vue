@@ -23,7 +23,7 @@
 </template>
 
 <script lang="coffee">
-#import { teXifyAM } from "/imports/client/mathproblems/renderAM.coffee"
+#import { teXifyAM } from "/imports/mathProblems/renderAM.coffee"
 return
   data : ->
     keys : [

@@ -17,7 +17,7 @@ v-ons-list-item
 </template>
 
 <script lang="coffee">
-import { getModuleTitle } from "/imports/client/mathproblems/getModulesList.coffee"
+import { getModuleTitle } from "/imports/mathProblems/getModulesList.coffee"
 import DisplayProblem from "./DisplayProblem.vue"
 return
   props :

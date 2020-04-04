@@ -3,7 +3,7 @@ svg(ref="svg" width="200" height="200" preserveAspectRatio="xMidYMid meet")
 </template>
 
 <script lang="coffee">
-import { GeometryDraw } from "/imports/client/mathproblems/geometryDraw.coffee"
+import { GeometryDraw } from "/imports/mathProblems/geometryDraw.coffee"
 return
   data : ->
     drawing : {}
