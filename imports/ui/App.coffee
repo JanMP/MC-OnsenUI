@@ -3,13 +3,13 @@ import 'onsenui/css/onsenui.css'
 import 'onsenui/css/onsen-css-components.css'
 
 import {Button, Page, Splitter, SplitterSide, SplitterContent} from 'react-onsenui'
-import ProblemPage from './ProblemPage/ProblemPage'
+import ProblemNavigator from './ProblemNavigator'
 
 export default App = ->
   
   <Splitter>
     <SplitterContent>
-      <ProblemPage/>
+      <ProblemNavigator/>
     </SplitterContent>
     <SplitterSide
       side="right"
