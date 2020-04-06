@@ -9,8 +9,11 @@ export default GeometryDrawDisplay = ({data}) ->
   useEffect ->
     drawing.paper?.clear()
     setDrawing newDrawing = new GeometryDraw svg.current
-    newDrawing.draw?(data)
-    console.log drawing
+    try
+      newDrawing.draw?(data)
+    catch error
+      console.log data
+      console.error error
     return
   , [data]
 
