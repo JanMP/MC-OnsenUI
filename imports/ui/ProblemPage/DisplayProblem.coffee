@@ -12,6 +12,6 @@ export default DisplayProblem = ({problem}) ->
     <p>{problem?.description}</p>
     {<Katex tex={problem?.problemTeX}/> unless problem.skipExpression}
     <FunctionPlot data={problem?.functionPlotData}/>
-   { <GeometryDrawDisplay data={problem?.geometryDrawData}/> if problem?.geometryDrawData?}
-    <pre>{JSON.stringify problem, null, 2}</pre>
+    {<GeometryDrawDisplay data={problem?.geometryDrawData}/> if problem?.geometryDrawData?}
+    {<pre>{JSON.stringify problem, null, 2}</pre> if false}
   </>
