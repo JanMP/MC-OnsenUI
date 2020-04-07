@@ -36,7 +36,7 @@ export default DiesplayResult = ({result, answer, solutionTeX}) ->
   <div className="display-result">
     <h4>Deine Antwort:</h4>
     <Katex tex={teXifyAM answer}/>
-    <h4>Deine Musterlösung:</h4>
+    <h4>Die Musterlösung:</h4>
     <Katex tex={solutionTeX}/>
     {if result.pass
       <div className="result-header pass back">Das Ergebnis ist korrekt.</div>
