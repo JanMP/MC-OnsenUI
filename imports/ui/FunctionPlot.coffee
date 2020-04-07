@@ -1,7 +1,7 @@
 import React from 'react'
 import math from "mathjs"
 
-arrowLength = 1
+arrowLength = .7
 scale = 100
 margin = 30
 fontSize = 40
