@@ -41,6 +41,6 @@ export default DiesplayResult = ({result, answer, solutionTeX}) ->
     {if result.pass
       <div className="result-header pass back">Das Ergebnis ist korrekt.</div>
     else
-      <div className="result-header fail back">Das Ergebnis ist korrekt.</div>}
+      <div className="result-header fail back">Das Ergebnis ist NICHT korrekt.</div>}
     <Details result={result}/>
   </div>
