@@ -63,7 +63,7 @@ export default MobileInput = ({solution, level, onSubmit, onIncLevel, onDecLevel
       when "√" then insert "sqrt("
       else insert symbol
 
-  <div className="mobile-input">
+  <div className="mobile-input" id="theInput">
     <div className="display">
       <span>{answerString.slice 0, cursorPosition}</span>
       <span className="cursor">│</span>

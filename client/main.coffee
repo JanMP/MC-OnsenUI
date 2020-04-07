@@ -3,6 +3,7 @@ import {render} from 'react-dom'
 import {Meteor} from 'meteor/meteor'
 import {Mongo} from 'meteor/mongo'
 
+import "./main.styl"
 import App from '/imports/ui/App'
 
 #require "/imports/api/AccountsTemplates.coffee"
