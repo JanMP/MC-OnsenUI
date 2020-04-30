@@ -17,4 +17,4 @@ export default GeometryDrawDisplay = ({data}) ->
     return
   , [data]
 
-  <svg ref={svg} style={backgroundColor: "white", padding:"10px"} width="100%" preserveAspectRatio="xMidYMid meet"/>
+  <svg ref={svg} style={backgroundColor: "white", padding:"10px"} width="96%" preserveAspectRatio="xMidYMid meet"/>
