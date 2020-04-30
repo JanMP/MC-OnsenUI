@@ -17,10 +17,10 @@ lists = []
     }
 
 Details = ({result}) ->
-  lists.map (list) ->
+  lists.map (list, index) ->
     return null unless result[list.key].length
-    result[list.key].map (rowText) ->
-      <Row className="detail-row">
+    result[list.key].map (rowText, index2) ->
+      <Row className="detail-row" key={"#{index}-#{index2}"}>
         <Col width={64} className="icon-column">
           <FontAwesomeIcon
             className={"#{list.passString} text icon"}
@@ -31,7 +31,7 @@ Details = ({result}) ->
       </Row>
     
 
-export default DiesplayResult = ({result, answer, solutionTeX}) ->
+export default DisplayResult = ({result, answer, solutionTeX}) ->
 
   <div className="display-result">
     <h4>Deine Antwort:</h4>

@@ -4,7 +4,6 @@ import Katex from '/imports/ui/Katex'
 import FunctionPlot from '/imports/ui/FunctionPlot'
 import GeometryDrawDisplay from '/imports/ui/GeometryDrawDisplay'
 
-
 export default DisplayProblem = ({problem}) ->
 
   <>

@@ -16,11 +16,11 @@ export default ModuleList = ({list, selectModule}) ->
       <ListHeader>{list.title}</ListHeader>
     else null
 
-  renderRow = (row, idx) ->
+  renderRow = (row, index) ->
     if hasChildren row
-      <ModuleList list={row} selectModule={selectModule} key={idx}/>
+      <ModuleList list={row} selectModule={selectModule} key={index}/>
     else
-      <ListItem onClick={handleClick row} key={idx}>
+      <ListItem onClick={handleClick row} key={index}>
         <span className="list-item__title">{row.title}</span>
         <span className="list-item__subtitle">{row.description}</span>
       </ListItem>

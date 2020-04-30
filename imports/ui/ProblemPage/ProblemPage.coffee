@@ -6,6 +6,7 @@ import DisplayProblem from "./DisplayProblem"
 import DisplayResult from "./DisplayResult"
 import MobileInput from "./MobileInput"
 # import { insertSubmission } from "/imports/api/submissions.coffee"
+import ErrorBoundary from '/imports/ui/ErrorBoundary'
 import _ from "lodash"
 
 
@@ -19,12 +20,18 @@ export default ProblemPage = ({moduleKey, onPop}) ->
   [answered, setAnswered] = useState false
   [resultDisplayProps, setResultDisplayProps] = useState {}
   [toolbarHeight, setToolbarHeight] = useState 0
+  [errorBoundaryKey, setErrorBoundaryKey] = useState 0
 
   getNewProblem = ->
     # TODO implement unsolvedProblems storing and rettreival
     setProblem newProblem = new Problem moduleKey, level, "de"
     setLevel newProblem.level
     setAnswered false
+
+  onError = ->
+    console.log "ErrorBoundary Caught an Error!"
+    setErrorBoundaryKey errorBoundaryKey + 1
+    getNewProblem()
 
   useEffect getNewProblem, [level]
 
@@ -76,11 +83,13 @@ export default ProblemPage = ({moduleKey, onPop}) ->
     renderBottomToolbar={renderBottomToolbar}
   >
     <div>
-      {
-        if answered
-          <DisplayResult {resultDisplayProps...}/>
-        else
-          <DisplayProblem problem={problem}/>
-      }
+      <ErrorBoundary key={errorBoundaryKey} onError={onError}>
+        {
+          if answered
+            <DisplayResult {resultDisplayProps...}/>
+          else
+              <DisplayProblem problem={problem}/>
+        }
+      </ErrorBoundary>
     </div>
   </Page>
