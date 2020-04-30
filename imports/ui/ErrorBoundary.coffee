@@ -10,18 +10,6 @@ export default class ErrorBoundary extends React.Component
     @state =
       hasError: false
 
-  # shouldComponentUpdate: (nextProps, nextState) ->
-  #   console.log 'shouldComponentUpdate: hasError: ', @state.hasError
-  #   unless _.isEqual nextProps.data, @props.data
-  #     console.log 'props.data changed'
-  #     if @state.hasError
-  #       @setState hasError: false
-  #     return true
-  #   unless @state.hasError is nextState.hasError
-  #     return true
-  #   false
-
-
   componentDidCatch: (error, info) ->
     @setState hasError: true
     console.error 'Caught by ErrorBoundary:', error, info
